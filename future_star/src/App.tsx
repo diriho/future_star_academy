@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Layout } from './components/layout/Layout'
 import { LoadingSpinner } from './components/shared/LoadingSpinner'
+import './App.css'
 
 const Home = lazy(() => import('./pages/Home'))
 const GetInvolvedLanding = lazy(() => import('./pages/GetInvolved/GetInvolvedLanding'))
@@ -16,7 +17,7 @@ const NotFound = lazy(() => import('./pages/NotFound'))
 
 function PageFallback() {
   return (
-    <div className="flex min-h-[60vh] items-center justify-center">
+    <div className="page-fallback">
       <LoadingSpinner size="md" />
     </div>
   )

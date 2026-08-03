@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Mail } from 'lucide-react'
 import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from '../shared/SocialIcons'
+import './Footer.css'
 
 const quickLinks = [
   { label: 'About Us', to: '/#mission' },
@@ -27,35 +28,32 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-navy text-white">
-      <div id="contact" className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 md:px-10 lg:grid-cols-4">
+    <footer className="footer">
+      <div id="contact" className="container footer__grid">
         <div>
-          <Link to="/" className="flex items-center gap-3">
-            <img src="/logo.png" alt="Future Stars Academy" className="h-12 w-12 object-contain" />
-            <span className="font-heading text-sm font-extrabold uppercase leading-tight tracking-wide">
+          <Link to="/" className="footer__logo-link">
+            <img src="/logo.png" alt="Future Stars Academy" className="footer__logo-img" />
+            <span className="footer__logo-text">
               Future Stars
               <br />
-              <span className="text-gold">Academy</span>
+              <span className="footer__logo-accent">Academy</span>
             </span>
           </Link>
-          <p className="mt-4 text-sm leading-relaxed text-white/70">
+          <p className="footer__tagline">
             Building minds, developing talents, and transforming lives for a brighter future.
           </p>
-          <a
-            href="mailto:info@fsaliberia.org"
-            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-gold transition-colors hover:text-gold-dark"
-          >
-            <Mail className="h-4 w-4" aria-hidden="true" />
+          <a href="mailto:info@fsaliberia.org" className="footer__email">
+            <Mail size={16} aria-hidden="true" />
             info@fsaliberia.org
           </a>
         </div>
 
         <div>
-          <h3 className="font-heading text-sm font-bold uppercase tracking-widest text-gold">Quick Links</h3>
-          <ul className="mt-4 space-y-2.5">
+          <h3 className="footer__heading">Quick Links</h3>
+          <ul className="footer__list">
             {quickLinks.map((link) => (
               <li key={link.label}>
-                <Link to={link.to} className="text-sm text-white/75 transition-colors hover:text-white">
+                <Link to={link.to} className="footer__list-link">
                   {link.label}
                 </Link>
               </li>
@@ -64,11 +62,11 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-heading text-sm font-bold uppercase tracking-widest text-gold">Resources</h3>
-          <ul className="mt-4 space-y-2.5">
+          <h3 className="footer__heading">Resources</h3>
+          <ul className="footer__list">
             {resourceLinks.map((link) => (
               <li key={link.label}>
-                <Link to={link.to} className="text-sm text-white/75 transition-colors hover:text-white">
+                <Link to={link.to} className="footer__list-link">
                   {link.label}
                 </Link>
               </li>
@@ -77,9 +75,9 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-heading text-sm font-bold uppercase tracking-widest text-gold">Stay Connected</h3>
-          <p className="mt-4 text-sm text-white/70">Follow us on social media for updates, stories, and upcoming events.</p>
-          <div className="mt-4 flex gap-3">
+          <h3 className="footer__heading">Stay Connected</h3>
+          <p className="footer__blurb">Follow us on social media for updates, stories, and upcoming events.</p>
+          <div className="footer__social">
             {socialLinks.map(({ label, href, Icon }) => (
               <a
                 key={label}
@@ -87,17 +85,17 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-gold hover:text-navy"
+                className="footer__social-link"
               >
-                <Icon className="h-4 w-4" aria-hidden="true" />
+                <Icon width={16} height={16} aria-hidden="true" />
               </a>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-6">
-        <p className="text-center text-xs text-white/50">
+      <div className="footer__bottom">
+        <p className="footer__copyright">
           © {new Date().getFullYear()} Future Stars Academy. All rights reserved.
         </p>
       </div>

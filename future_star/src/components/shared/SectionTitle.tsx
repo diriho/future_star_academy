@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { cn } from '../../lib/utils'
+import './SectionTitle.css'
 
 interface SectionTitleProps {
   eyebrow?: string
@@ -24,28 +25,18 @@ export function SectionTitle({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5 }}
-      className={cn(align === 'center' ? 'text-center mx-auto' : 'text-left', 'max-w-2xl', className)}
+      className={cn('section-title', align === 'center' && 'section-title--center', className)}
     >
       {eyebrow && (
-        <span
-          className={cn(
-            'block font-heading text-sm font-bold uppercase tracking-widest mb-2',
-            light ? 'text-gold' : 'text-gold-dark',
-          )}
-        >
+        <span className={cn('section-title__eyebrow', light && 'section-title__eyebrow--light')}>
           {eyebrow}
         </span>
       )}
-      <h2
-        className={cn(
-          'font-heading text-3xl md:text-4xl font-bold leading-tight',
-          light ? 'text-white' : 'text-navy',
-        )}
-      >
+      <h2 className={cn('section-title__heading', light && 'section-title__heading--light')}>
         {title}
       </h2>
       {description && (
-        <p className={cn('mt-4 text-base leading-relaxed', light ? 'text-white/80' : 'text-navy/70')}>
+        <p className={cn('section-title__description', light && 'section-title__description--light')}>
           {description}
         </p>
       )}

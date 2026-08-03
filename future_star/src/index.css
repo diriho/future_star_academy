@@ -1,34 +1,179 @@
-@import "tailwindcss";
-
-@theme {
-  --color-navy: #0b2346;
-  --color-navy-light: #123a6b;
-  --color-navy-dark: #081a34;
-  --color-gold: #f2b705;
+:root {
+  --color-navy: #071a3d;
+  --color-navy-rgb: 7, 26, 61;
+  --color-navy-light: #0e3162;
+  --color-navy-dark: #04112b;
+  --color-gold: #f4b400;
+  --color-gold-rgb: 244, 180, 0;
   --color-gold-dark: #d9a400;
   --color-offwhite: #f7f7fa;
+  --color-white: #ffffff;
 
-  --font-heading: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Anton', var(--font-heading);
+
+  --container-width: 1280px;
+  --shadow-card: 0 2px 10px rgba(var(--color-navy-rgb), 0.08);
+  --shadow-card-hover: 0 12px 30px rgba(var(--color-navy-rgb), 0.15);
 }
 
-@layer base {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-navy);
+  background: var(--color-white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 40px;
+  }
+}
+
+.container--narrow {
+  max-width: 48rem;
+}
+
+/* Reusable page-section backgrounds/padding, shared across page-level sections */
+.section {
+  padding-block: 80px;
+}
+
+.section--sm {
+  padding-block: 64px;
+}
+
+.section--white {
+  background: var(--color-white);
+}
+
+.section--offwhite {
+  background: var(--color-offwhite);
+}
+
+.section--navy {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+/* Spacing helpers for one-off gaps between a section title and the content below it */
+.mx-auto {
+  margin-inline: auto;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.mb-10 {
+  margin-bottom: 40px;
+}
+
+.mb-12 {
+  margin-bottom: 48px;
+}
+
+.mb-14 {
+  margin-bottom: 56px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
-
-  body {
-    font-family: var(--font-body);
-    color: var(--color-navy);
-    background: #ffffff;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-heading);
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

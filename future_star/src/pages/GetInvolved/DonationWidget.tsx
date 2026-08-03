@@ -6,6 +6,7 @@ import { Heart, RefreshCw } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { createCheckoutSession } from '../../lib/api'
 import { LoadingSpinner } from '../../components/shared/LoadingSpinner'
+import './DonationWidget.css'
 
 const PRESETS = {
   once: [25, 50, 100, 250],
@@ -57,59 +58,50 @@ export function DonationWidget() {
   const isCustom = selected === 'custom'
 
   return (
-    <div className="mx-auto max-w-2xl rounded-2xl bg-white p-8 shadow-[0_8px_40px_rgba(11,35,70,0.12)] ring-1 ring-navy/5 md:p-10">
-      <div className="mx-auto flex w-fit rounded-full bg-offwhite p-1">
+    <div className="donation-widget">
+      <div className="donation-widget__toggle">
         {(['once', 'monthly'] as const).map((freq) => (
           <button
             key={freq}
             type="button"
             onClick={() => switchFrequency(freq)}
             aria-pressed={frequency === freq}
-            className={cn(
-              'rounded-full px-6 py-2 text-sm font-heading font-bold uppercase tracking-wide transition-colors',
-              frequency === freq ? 'bg-navy text-white' : 'text-navy/60 hover:text-navy',
-            )}
+            className={cn('donation-widget__toggle-btn', frequency === freq && 'is-active')}
           >
             {freq === 'once' ? 'One-Time' : 'Monthly'}
           </button>
         ))}
       </div>
 
-      <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+      <div className="donation-widget__amounts">
         {PRESETS[frequency].map((amount) => (
           <motion.button
             key={amount}
             type="button"
             whileTap={{ scale: 0.96 }}
             onClick={() => setSelected(amount)}
-            className={cn(
-              'rounded-lg border-2 py-4 text-center font-heading text-lg font-bold transition-colors',
-              selected === amount ? 'border-gold bg-gold/10 text-navy' : 'border-navy/10 text-navy/70 hover:border-gold/50',
-            )}
+            className={cn('donation-widget__amount-btn', selected === amount && 'is-selected')}
           >
             ${amount}
-            {frequency === 'monthly' && <span className="block text-xs font-normal text-navy/50">/month</span>}
+            {frequency === 'monthly' && <span className="donation-widget__amount-period">/month</span>}
           </motion.button>
         ))}
         <button
           type="button"
           onClick={() => setSelected('custom')}
-          className={cn(
-            'rounded-lg border-2 py-4 text-center font-heading text-lg font-bold transition-colors',
-            isCustom ? 'border-gold bg-gold/10 text-navy' : 'border-navy/10 text-navy/70 hover:border-gold/50',
-          )}
+          className={cn('donation-widget__amount-btn', isCustom && 'is-selected')}
         >
           Custom
         </button>
       </div>
 
       {isCustom && (
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
-          <label htmlFor="customAmount" className="mb-1.5 block text-sm font-semibold text-navy">
+        <form onSubmit={handleSubmit(onSubmit)} className="donation-widget__custom-form">
+          <label htmlFor="customAmount" className="donation-widget__custom-label">
             Enter your {frequency === 'monthly' ? 'monthly ' : ''}donation amount (USD)
           </label>
-          <div className="flex items-center gap-2 rounded-lg border-2 border-navy/10 px-4 py-2 focus-within:border-gold">
-            <span className="text-navy/50">$</span>
+          <div className="donation-widget__custom-input-wrap">
+            <span className="donation-widget__custom-currency">$</span>
             <input
               id="customAmount"
               type="number"
@@ -118,7 +110,7 @@ export function DonationWidget() {
               inputMode="decimal"
               aria-invalid={!!errors.customAmount}
               aria-describedby={errors.customAmount ? 'customAmount-error' : undefined}
-              className="w-full border-0 bg-transparent py-1 text-navy outline-none"
+              className="donation-widget__custom-input"
               placeholder="0.00"
               {...register('customAmount', {
                 required: 'Please enter an amount.',
@@ -127,7 +119,7 @@ export function DonationWidget() {
             />
           </div>
           {errors.customAmount && (
-            <p id="customAmount-error" role="alert" className="mt-1.5 text-xs font-medium text-red-600">
+            <p id="customAmount-error" role="alert" className="donation-widget__custom-error">
               {errors.customAmount.message}
             </p>
           )}
@@ -138,18 +130,18 @@ export function DonationWidget() {
         type="button"
         disabled={submitting}
         onClick={() => (isCustom ? handleSubmit(onSubmit)() : startCheckout(selected as number))}
-        className="mt-8 flex w-full items-center justify-center gap-2 rounded-md bg-gold px-6 py-4 font-heading text-sm font-bold uppercase tracking-wide text-navy shadow-sm transition-all hover:-translate-y-0.5 hover:bg-gold-dark hover:shadow-md disabled:pointer-events-none disabled:opacity-70"
+        className="donation-widget__submit"
       >
         {submitting ? (
           <LoadingSpinner size="sm" />
         ) : frequency === 'monthly' ? (
-          <RefreshCw className="h-4 w-4" aria-hidden="true" />
+          <RefreshCw size={16} aria-hidden="true" />
         ) : (
-          <Heart className="h-4 w-4" aria-hidden="true" />
+          <Heart size={16} aria-hidden="true" />
         )}
         {submitting ? 'Redirecting to checkout…' : frequency === 'monthly' ? 'Become a Monthly Sponsor' : 'Donate Once'}
       </button>
-      <p className="mt-4 text-center text-xs text-navy/50">
+      <p className="donation-widget__footnote">
         {isCustom && customAmount ? `You're donating $${customAmount}${frequency === 'monthly' ? '/month' : ''}. ` : ''}
         Secure checkout powered by Stripe.
       </p>

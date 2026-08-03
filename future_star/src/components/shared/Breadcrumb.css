@@ -1,0 +1,44 @@
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.breadcrumb__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb__link {
+  transition: color 0.2s ease;
+  color: rgba(var(--color-navy-rgb), 0.6);
+}
+
+.breadcrumb__link:hover {
+  color: var(--color-gold);
+}
+
+.breadcrumb__link--light {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.breadcrumb__current {
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.breadcrumb__current--light {
+  color: var(--color-gold);
+}
+
+.breadcrumb__chevron {
+  color: rgba(var(--color-navy-rgb), 0.4);
+}
+
+.breadcrumb__chevron--light {
+  color: rgba(255, 255, 255, 0.5);
+}

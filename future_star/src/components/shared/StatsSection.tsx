@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import './StatsSection.css'
 
 export interface Stat {
   value: number
@@ -44,7 +45,7 @@ interface StatsSectionProps {
 export function StatsSection({ stats, className }: StatsSectionProps) {
   return (
     <div className={className}>
-      <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+      <div className="stats-grid">
         {stats.map((stat, i) => (
           <motion.div
             key={stat.label}
@@ -52,14 +53,12 @@ export function StatsSection({ stats, className }: StatsSectionProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.4, delay: i * 0.08 }}
-            className="text-center"
+            className="stats-grid__item"
           >
-            <div className="font-heading text-3xl font-extrabold text-gold md:text-4xl">
+            <div className="stats-grid__value">
               <Counter value={stat.value} suffix={stat.suffix} />
             </div>
-            <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-white/80 md:text-sm">
-              {stat.label}
-            </p>
+            <p className="stats-grid__label">{stat.label}</p>
           </motion.div>
         ))}
       </div>

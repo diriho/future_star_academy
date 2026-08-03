@@ -1,0 +1,135 @@
+.footer {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.footer__grid {
+  display: grid;
+  gap: 40px;
+  padding-block: 64px;
+}
+
+@media (min-width: 768px) {
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer__logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer__logo-img {
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+}
+
+.footer__logo-text {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.footer__logo-accent {
+  color: var(--color-gold);
+}
+
+.footer__tagline {
+  margin-top: 16px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer__email {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  transition: color 0.2s ease;
+}
+
+.footer__email:hover {
+  color: var(--color-gold-dark);
+}
+
+.footer__heading {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+}
+
+.footer__list {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__list-link {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s ease;
+}
+
+.footer__list-link:hover {
+  color: var(--color-white);
+}
+
+.footer__blurb {
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer__social {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+}
+
+.footer__social-link {
+  display: flex;
+  height: 36px;
+  width: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.footer__social-link:hover {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-block: 24px;
+}
+
+.footer__copyright {
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}

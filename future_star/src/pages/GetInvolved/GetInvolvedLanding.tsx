@@ -5,6 +5,7 @@ import { ProgramCard } from '../../components/shared/ProgramCard'
 import { CTASection } from '../../components/shared/CTASection'
 import { getInvolvedCards } from '../../data/getInvolvedCards'
 import teamHuddle from '../../assets/team-huddle.jpg'
+import './GetInvolvedLanding.css'
 
 export default function GetInvolvedLanding() {
   return (
@@ -25,15 +26,15 @@ export default function GetInvolvedLanding() {
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Get Involved' }]}
       />
 
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
+      <section className="section section--white">
+        <div className="container">
           <SectionTitle
             eyebrow="Ways to Help"
             title="Choose How You'd Like to Get Involved"
             align="center"
             className="mb-14"
           />
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="involved-landing__grid">
             {getInvolvedCards.map((card) => (
               <ProgramCard key={card.title} {...card} />
             ))}

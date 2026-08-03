@@ -1,0 +1,9 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.layout-main {
+  flex: 1;
+}

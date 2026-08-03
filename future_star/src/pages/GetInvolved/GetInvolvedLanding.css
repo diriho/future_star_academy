@@ -1,0 +1,10 @@
+.involved-landing__grid {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .involved-landing__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

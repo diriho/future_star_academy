@@ -1,0 +1,100 @@
+.program-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(var(--color-navy-rgb), 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.program-card:hover {
+  box-shadow: 0 16px 36px rgba(var(--color-navy-rgb), 0.18);
+}
+
+.program-card__image {
+  position: relative;
+  height: 224px;
+  overflow: hidden;
+}
+
+.program-card__image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.program-card:hover .program-card__image img {
+  transform: scale(1.1);
+}
+
+.program-card__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(var(--color-navy-rgb), 0.7), rgba(var(--color-navy-rgb), 0.1) 60%, transparent);
+}
+
+.program-card__icon {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  height: 48px;
+  width: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--color-gold);
+  color: var(--color-navy);
+  box-shadow: 0 4px 6px rgba(var(--color-navy-rgb), 0.15);
+}
+
+.program-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.program-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.program-card__description {
+  margin-top: 8px;
+  flex: 1;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(var(--color-navy-rgb), 0.7);
+}
+
+.program-card__link {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-navy);
+  transition: color 0.2s ease;
+}
+
+.program-card:hover .program-card__link {
+  color: var(--color-gold-dark);
+}
+
+.program-card__arrow {
+  transition: transform 0.2s ease;
+}
+
+.program-card:hover .program-card__arrow {
+  transform: translateX(4px);
+}

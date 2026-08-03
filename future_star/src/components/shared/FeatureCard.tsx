@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { cn } from '../../lib/utils'
+import './FeatureCard.css'
 
 interface FeatureCardProps {
   icon: LucideIcon
@@ -18,21 +19,13 @@ export function FeatureCard({ icon: Icon, title, description, tone = 'navy', cla
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.4 }}
       whileHover={{ y: -6 }}
-      className={cn(
-        'group rounded-xl bg-white p-6 shadow-[0_2px_10px_rgba(11,35,70,0.08)] ring-1 ring-navy/5 transition-shadow duration-300 hover:shadow-[0_12px_30px_rgba(11,35,70,0.15)]',
-        className,
-      )}
+      className={cn('feature-card', className)}
     >
-      <div
-        className={cn(
-          'mb-5 flex h-14 w-14 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110',
-          tone === 'navy' ? 'bg-navy text-gold' : 'bg-gold text-navy',
-        )}
-      >
-        <Icon className="h-6 w-6" strokeWidth={2} aria-hidden="true" />
+      <div className={cn('feature-card__icon', `feature-card__icon--${tone}`)}>
+        <Icon size={24} strokeWidth={2} aria-hidden="true" />
       </div>
-      <h3 className="font-heading text-lg font-bold text-navy">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-navy/70">{description}</p>
+      <h3 className="feature-card__title">{title}</h3>
+      <p className="feature-card__description">{description}</p>
     </motion.div>
   )
 }

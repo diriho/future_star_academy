@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from './Button'
+import './CTASection.css'
 
 interface CTAButton {
   label: string
@@ -17,25 +18,19 @@ interface CTASectionProps {
 
 export function CTASection({ title, subtitle, primary, secondary }: CTASectionProps) {
   return (
-    <section className="relative overflow-hidden bg-navy py-16">
-      <div
-        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-gold/10 blur-3xl"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-gold/10 blur-3xl"
-        aria-hidden="true"
-      />
+    <section className="cta">
+      <div className="cta__blob cta__blob--top" aria-hidden="true" />
+      <div className="cta__blob cta__blob--bottom" aria-hidden="true" />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
         transition={{ duration: 0.5 }}
-        className="relative mx-auto flex max-w-3xl flex-col items-center px-6 text-center"
+        className="cta__content"
       >
-        <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">{title}</h2>
-        {subtitle && <p className="mt-4 text-base leading-relaxed text-white/80">{subtitle}</p>}
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <h2 className="cta__title">{title}</h2>
+        {subtitle && <p className="cta__subtitle">{subtitle}</p>}
+        <div className="cta__actions">
           <Button to={primary.to} variant="gold" size="lg" icon={primary.icon}>
             {primary.label}
           </Button>

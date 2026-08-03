@@ -2,6 +2,7 @@ import { useEffect, useRef, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { X } from 'lucide-react'
+import './Modal.css'
 
 interface ModalProps {
   isOpen: boolean
@@ -61,7 +62,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-navy/70 p-4 backdrop-blur-sm"
+          className="modal__overlay"
           onMouseDown={(e) => {
             if (e.target === e.currentTarget) onClose()
           }}
@@ -75,10 +76,10 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 16 }}
             transition={{ duration: 0.25 }}
-            className="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl"
+            className="modal__dialog"
           >
-            <div className="flex items-center justify-between border-b border-navy/10 px-6 py-4">
-              <h2 id="modal-title" className="font-heading text-lg font-bold text-navy">
+            <div className="modal__header">
+              <h2 id="modal-title" className="modal__title">
                 {title}
               </h2>
               <button
@@ -86,12 +87,12 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
                 type="button"
                 onClick={onClose}
                 aria-label="Close dialog"
-                className="rounded-full p-1.5 text-navy/60 transition-colors hover:bg-navy/5 hover:text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
+                className="modal__close"
               >
-                <X className="h-5 w-5" aria-hidden="true" />
+                <X size={20} aria-hidden="true" />
               </button>
             </div>
-            <div className="flex-1 overflow-y-auto">{children}</div>
+            <div className="modal__body">{children}</div>
           </motion.div>
         </motion.div>
       )}

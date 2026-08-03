@@ -26,6 +26,7 @@ import { GoogleFormModal } from '../../components/shared/GoogleFormModal'
 import { GOOGLE_FORMS } from '../../config/forms'
 import classroom2 from '../../assets/classroom-2.jpg'
 import teamHuddle from '../../assets/team-huddle.jpg'
+import './Partner.css'
 
 const whoCanPartner = [
   { icon: Building2, title: 'Businesses', description: 'Local and international businesses supporting youth development.' },
@@ -74,16 +75,16 @@ export default function Partner() {
         subtitle="Join businesses, schools, and organizations helping us build minds, develop talents, and transform lives across Liberia."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Get Involved', to: '/get-involved' }, { label: 'Partner' }]}
         actions={
-          <Button variant="gold" size="lg" icon={<Handshake className="h-4 w-4" />} onClick={() => setFormOpen(true)}>
+          <Button variant="gold" size="lg" icon={<Handshake size={16} />} onClick={() => setFormOpen(true)}>
             Partner With Us
           </Button>
         }
       />
 
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
+      <section className="section section--white">
+        <div className="container">
           <SectionTitle eyebrow="Who Can Partner?" title="Organizations Like Yours" align="center" className="mb-14" />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="partner-grid partner-grid--4">
             {whoCanPartner.map((item) => (
               <FeatureCard key={item.title} {...item} />
             ))}
@@ -91,10 +92,10 @@ export default function Partner() {
         </div>
       </section>
 
-      <section className="bg-offwhite py-20">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
+      <section className="section section--offwhite">
+        <div className="container">
           <SectionTitle eyebrow="Partnership Opportunities" title="Ways Your Organization Can Help" align="center" className="mb-14" />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="partner-grid partner-grid--3">
             {partnershipOpportunities.map((item) => (
               <FeatureCard key={item.title} {...item} tone="gold" />
             ))}
@@ -102,16 +103,16 @@ export default function Partner() {
         </div>
       </section>
 
-      <section className="bg-white py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 md:px-10 lg:grid-cols-2">
+      <section className="section section--white">
+        <div className="container partner-vision">
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.5 }}
-            className="overflow-hidden rounded-2xl"
+            className="partner-vision__image"
           >
-            <img src={teamHuddle} alt="Future Stars Academy team" className="h-full w-full object-cover" />
+            <img src={teamHuddle} alt="Future Stars Academy team" />
           </motion.div>
           <div>
             <SectionTitle
@@ -119,7 +120,7 @@ export default function Partner() {
               title="Building a Bigger Future, Together"
               description="Our partnerships fuel a vision that goes far beyond a single program — we're building the infrastructure for generational change across Liberia."
             />
-            <ul className="mt-8 space-y-4">
+            <ul className="partner-vision__list">
               {visionGoals.map((goal, i) => (
                 <motion.li
                   key={goal}
@@ -127,10 +128,10 @@ export default function Partner() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.35, delay: i * 0.07 }}
-                  className="flex items-center gap-3"
+                  className="partner-vision__item"
                 >
-                  <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-gold-dark" aria-hidden="true" />
-                  <span className="font-medium text-navy">{goal}</span>
+                  <CheckCircle2 size={20} className="partner-vision__icon" aria-hidden="true" />
+                  <span className="partner-vision__label">{goal}</span>
                 </motion.li>
               ))}
             </ul>

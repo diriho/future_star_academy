@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ExternalLink } from 'lucide-react'
 import { Modal } from './Modal'
 import { LoadingSpinner } from './LoadingSpinner'
+import './GoogleFormModal.css'
 
 interface GoogleFormModalProps {
   isOpen: boolean
@@ -15,31 +16,26 @@ export function GoogleFormModal({ isOpen, onClose, title, formUrl }: GoogleFormM
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title}>
-      <div className="relative min-h-[70vh] w-full">
+      <div className="google-form__frame-wrap">
         {!loaded && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white">
+          <div className="google-form__loading">
             <LoadingSpinner />
-            <p className="text-sm text-navy/60">Loading form…</p>
+            <p>Loading form…</p>
           </div>
         )}
         <iframe
           title={title}
           src={formUrl}
           onLoad={() => setLoaded(true)}
-          className="h-[70vh] w-full border-0"
+          className="google-form__iframe"
         >
           Loading…
         </iframe>
       </div>
-      <div className="flex justify-center border-t border-navy/10 px-6 py-3">
-        <a
-          href={formUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-navy/60 transition-colors hover:text-gold-dark"
-        >
+      <div className="google-form__footer">
+        <a href={formUrl} target="_blank" rel="noopener noreferrer" className="google-form__footer-link">
           Having trouble viewing the form? Open it in a new tab
-          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+          <ExternalLink size={14} aria-hidden="true" />
         </a>
       </div>
     </Modal>

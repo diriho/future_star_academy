@@ -11,6 +11,7 @@ import { GoogleFormModal } from '../../components/shared/GoogleFormModal'
 import { volunteerOpportunities } from '../../data/volunteerOpportunities'
 import { GOOGLE_FORMS } from '../../config/forms'
 import teamHuddle from '../../assets/team-huddle.jpg'
+import './Volunteer.css'
 
 export default function Volunteer() {
   const [formOpen, setFormOpen] = useState(false)
@@ -32,21 +33,21 @@ export default function Volunteer() {
         subtitle="Help shape the next generation through education, mentorship, sports, and community service."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Get Involved', to: '/get-involved' }, { label: 'Volunteer' }]}
         actions={
-          <Button variant="gold" size="lg" icon={<HandHeart className="h-4 w-4" />} onClick={() => setFormOpen(true)}>
+          <Button variant="gold" size="lg" icon={<HandHeart size={16} />} onClick={() => setFormOpen(true)}>
             Become a Volunteer
           </Button>
         }
       />
 
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
+      <section className="section section--white">
+        <div className="container">
           <SectionTitle
             eyebrow="Opportunities"
             title="Where You Can Make a Difference"
             align="center"
             className="mb-14"
           />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="volunteer-grid">
             {volunteerOpportunities.map((opportunity) => (
               <FeatureCard key={opportunity.title} {...opportunity} />
             ))}
@@ -54,8 +55,8 @@ export default function Volunteer() {
         </div>
       </section>
 
-      <section className="bg-navy py-16">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
+      <section className="section section--sm section--navy">
+        <div className="container">
           <SectionTitle eyebrow="Our Impact" title="Volunteers Like You Make This Possible" light align="center" className="mb-12" />
           <StatsSection
             stats={[

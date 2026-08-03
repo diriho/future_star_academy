@@ -22,6 +22,7 @@ import { FeatureCard } from '../components/shared/FeatureCard'
 import { StatsSection } from '../components/shared/StatsSection'
 import { GallerySection } from '../components/shared/GallerySection'
 import { LazyImage } from '../components/shared/LazyImage'
+import './Home.css'
 
 import soccerTrio from '../assets/soccer-trio.jpg'
 import classroom1 from '../assets/classroom-1.jpg'
@@ -113,32 +114,32 @@ export default function Home() {
       </Helmet>
 
       {/* Hero */}
-      <section className="relative flex min-h-[720px] items-center overflow-hidden">
-        <img src={soccerTrio} alt="Future Stars Academy soccer players" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/40" />
-        <div className="relative mx-auto w-full max-w-7xl px-6 pt-24 md:px-10">
+      <section className="home-hero">
+        <img src={soccerTrio} alt="" className="home-hero__image" />
+        <div className="home-hero__overlay" />
+        <div className="home-hero__content">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-2xl"
+            className="home-hero__inner"
           >
-            <h1 className="font-heading text-4xl font-extrabold uppercase leading-tight text-white md:text-6xl">
+            <h1 className="home-hero__title">
               Building Minds.
               <br />
               Developing Talents.
               <br />
-              <span className="text-gold">Transforming Lives.</span>
+              <span className="home-hero__title-accent">Transforming Lives.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
+            <p className="home-hero__subtitle">
               Empowering children and young people through education, mentorship, leadership, and sports
               to become future leaders on and off the field.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button to="/get-involved" variant="gold" size="lg" icon={<ArrowRight className="h-4 w-4" />}>
+            <div className="home-hero__actions">
+              <Button to="/get-involved" variant="gold" size="lg" icon={<ArrowRight size={16} />}>
                 Get Involved
               </Button>
-              <Button to="/get-involved/sponsor" variant="outline" size="lg" icon={<Heart className="h-4 w-4" />}>
+              <Button to="/get-involved/sponsor" variant="outline" size="lg" icon={<Heart size={16} />}>
                 Donate Now
               </Button>
             </div>
@@ -147,20 +148,14 @@ export default function Home() {
       </section>
 
       {/* Get Involved strip */}
-      <section className="bg-gold">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-6 md:grid-cols-4 md:px-10">
+      <section className="involved-strip">
+        <div className="container involved-strip__grid">
           {getInvolvedStrip.map((item) => (
-            <Link
-              key={item.title}
-              to={item.to}
-              className="group flex items-center gap-3 transition-transform duration-200 hover:-translate-y-0.5"
-            >
-              <item.icon className="h-7 w-7 flex-shrink-0 text-navy" strokeWidth={2} aria-hidden="true" />
+            <Link key={item.title} to={item.to} className="involved-strip__link">
+              <item.icon size={28} className="involved-strip__icon" strokeWidth={2} aria-hidden="true" />
               <span>
-                <span className="block font-heading text-sm font-extrabold uppercase tracking-wide text-navy">
-                  {item.title}
-                </span>
-                <span className="block text-xs font-semibold text-navy/70">{item.subtitle}</span>
+                <span className="involved-strip__title">{item.title}</span>
+                <span className="involved-strip__subtitle">{item.subtitle}</span>
               </span>
             </Link>
           ))}
@@ -168,14 +163,14 @@ export default function Home() {
       </section>
 
       {/* Mission */}
-      <section id="mission" className="scroll-mt-24 bg-white py-20">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 md:px-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
+      <section id="mission" className="mission-section">
+        <div className="container mission-section__grid">
           <SectionTitle
             eyebrow="Our Mission"
             title="Creating Opportunities. Inspiring Greatness."
             description="Future Stars Academy is a youth development organization committed to providing educational support, mentorship, leadership training, and soccer development for children and communities."
           />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="mission-section__cards">
             {missionCards.map((card) => (
               <FeatureCard key={card.title} {...card} />
             ))}
@@ -184,10 +179,10 @@ export default function Home() {
       </section>
 
       {/* Our Programs strip */}
-      <section className="bg-offwhite py-16">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
+      <section className="programs-strip">
+        <div className="container">
           <SectionTitle eyebrow="What We Do" title="Our Programs" align="center" className="mb-12" />
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-5">
+          <div className="programs-strip__grid">
             {programStrip.map((item, i) => (
               <motion.div
                 key={item.label}
@@ -195,12 +190,12 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="flex flex-col items-center text-center"
+                className="programs-strip__item"
               >
-                <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-navy text-gold">
-                  <item.icon className="h-6 w-6" strokeWidth={2} aria-hidden="true" />
+                <div className="programs-strip__icon">
+                  <item.icon size={24} strokeWidth={2} aria-hidden="true" />
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-navy/80">{item.label}</p>
+                <p className="programs-strip__label">{item.label}</p>
               </motion.div>
             ))}
           </div>
@@ -208,8 +203,8 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="bg-navy py-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 md:px-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]">
+      <section className="home-stats">
+        <div className="container home-stats__grid">
           <SectionTitle
             eyebrow="Our Impact"
             title="Together, We Transform Lives"
@@ -228,12 +223,12 @@ export default function Home() {
       </section>
 
       {/* News & Events */}
-      <section id="news" className="scroll-mt-24 bg-white py-20">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+      <section id="news" className="news-section">
+        <div className="container">
+          <div className="news-section__grid">
             <div>
               <SectionTitle eyebrow="News & Events" title="Latest From Future Stars Academy" className="mb-10" />
-              <div className="grid gap-6 sm:grid-cols-3">
+              <div className="news-section__items">
                 {newsItems.map((item, i) => (
                   <motion.article
                     key={item.title}
@@ -242,17 +237,15 @@ export default function Home() {
                     viewport={{ once: true, margin: '-40px' }}
                     transition={{ duration: 0.4, delay: i * 0.08 }}
                     whileHover={{ y: -6 }}
-                    className="overflow-hidden rounded-xl bg-white shadow-[0_2px_10px_rgba(11,35,70,0.08)] ring-1 ring-navy/5 transition-shadow hover:shadow-[0_12px_28px_rgba(11,35,70,0.16)]"
+                    className="news-card"
                   >
-                    <div className="relative h-40">
-                      <LazyImage src={item.image} alt={item.title} className="h-full w-full" />
-                      <span className="absolute left-3 top-3 rounded-full bg-gold px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-navy">
-                        {item.tag}
-                      </span>
+                    <div className="news-card__image">
+                      <LazyImage src={item.image} alt={item.title} className="news-card__lazy-image" />
+                      <span className="news-card__tag">{item.tag}</span>
                     </div>
-                    <div className="p-4">
-                      <h3 className="font-heading text-sm font-bold leading-snug text-navy">{item.title}</h3>
-                      <p className="mt-2 text-xs font-medium text-navy/50">{item.date}</p>
+                    <div className="news-card__body">
+                      <h3 className="news-card__title">{item.title}</h3>
+                      <p className="news-card__date">{item.date}</p>
                     </div>
                   </motion.article>
                 ))}
@@ -264,24 +257,21 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.4 }}
-              className="rounded-xl bg-navy p-7 text-white"
+              className="news-sidebar"
             >
-              <h3 className="font-heading text-lg font-bold text-gold">Get Involved Today</h3>
-              <p className="mt-2 text-sm text-white/75">
+              <h3 className="news-sidebar__title">Get Involved Today</h3>
+              <p className="news-sidebar__intro">
                 There are many ways to support our mission and help transform lives.
               </p>
-              <ul className="mt-6 space-y-1">
+              <ul className="news-sidebar__list">
                 {getInvolvedSidebar.map((item) => (
                   <li key={item.label}>
-                    <Link
-                      to={item.to}
-                      className="group flex items-center justify-between gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-white/10"
-                    >
-                      <span className="flex items-center gap-3 text-sm font-semibold">
-                        <item.icon className="h-4 w-4 text-gold" aria-hidden="true" />
+                    <Link to={item.to} className="news-sidebar__link">
+                      <span className="news-sidebar__link-label">
+                        <item.icon size={16} className="news-sidebar__link-icon" aria-hidden="true" />
                         {item.label}
                       </span>
-                      <ArrowRight className="h-4 w-4 text-white/40 transition-transform group-hover:translate-x-1 group-hover:text-gold" aria-hidden="true" />
+                      <ArrowRight size={16} className="news-sidebar__link-arrow" aria-hidden="true" />
                     </Link>
                   </li>
                 ))}
@@ -292,8 +282,8 @@ export default function Home() {
       </section>
 
       {/* Gallery */}
-      <section id="gallery" className="scroll-mt-24 bg-offwhite py-20">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
+      <section id="gallery" className="home-gallery">
+        <div className="container">
           <SectionTitle eyebrow="Gallery" title="Moments From Our Programs" align="center" className="mb-10" />
           <GallerySection images={galleryImages} />
         </div>

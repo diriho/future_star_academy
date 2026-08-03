@@ -9,6 +9,7 @@ import { SectionTitle } from '../../components/shared/SectionTitle'
 import { DonationWidget } from './DonationWidget'
 import classroom1 from '../../assets/classroom-1.jpg'
 import soccerTrio from '../../assets/soccer-trio.jpg'
+import './Sponsor.css'
 
 const wholeChildBenefits = [
   { icon: Backpack, label: 'School supplies' },
@@ -54,23 +55,23 @@ export default function Sponsor() {
           <>
             Sponsor a Child.
             <br />
-            <span className="text-gold">Transform a Future.</span>
+            <span className="hero__title-accent">Transform a Future.</span>
           </>
         }
         subtitle="Your sponsorship gives a child access to education, mentorship, and soccer development — and the chance to become a future leader."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Get Involved', to: '/get-involved' }, { label: 'Sponsor' }]}
       />
 
-      <section className="bg-white py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 md:px-10 lg:grid-cols-2">
+      <section className="section section--white">
+        <div className="container sponsor-split">
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.5 }}
-            className="overflow-hidden rounded-2xl"
+            className="sponsor-split__image"
           >
-            <img src={classroom1} alt="Student at Future Stars Academy" className="h-full w-full object-cover" />
+            <img src={classroom1} alt="Student at Future Stars Academy" />
           </motion.div>
           <div>
             <SectionTitle
@@ -78,13 +79,13 @@ export default function Sponsor() {
               title="Every Sponsorship Covers the Essentials"
               description="A sponsorship isn't just tuition — it's everything a child needs to show up ready to learn every single day."
             />
-            <div className="mt-8 grid grid-cols-2 gap-5">
+            <div className="sponsor-benefits">
               {wholeChildBenefits.map((item) => (
-                <div key={item.label} className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-navy text-gold">
-                    <item.icon className="h-5 w-5" aria-hidden="true" />
+                <div key={item.label} className="sponsor-benefit">
+                  <span className="sponsor-benefit__icon sponsor-benefit__icon--navy">
+                    <item.icon size={20} aria-hidden="true" />
                   </span>
-                  <span className="text-sm font-semibold text-navy">{item.label}</span>
+                  <span className="sponsor-benefit__label">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -92,32 +93,32 @@ export default function Sponsor() {
         </div>
       </section>
 
-      <section className="bg-offwhite py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 md:px-10 lg:grid-cols-2">
-          <div className="lg:order-2">
+      <section className="section section--offwhite">
+        <div className="container sponsor-split">
+          <div className="sponsor-split__image--order-2">
             <motion.div
               initial={{ opacity: 0, x: 24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5 }}
-              className="overflow-hidden rounded-2xl"
+              className="sponsor-split__image"
             >
-              <img src={soccerTrio} alt="Future Stars Academy soccer players" className="h-full w-full object-cover" />
+              <img src={soccerTrio} alt="Future Stars Academy soccer players" />
             </motion.div>
           </div>
-          <div className="lg:order-1">
+          <div className="sponsor-split__content--order-1">
             <SectionTitle
               eyebrow="Growth On and Off the Field"
               title="Building Character Through Sport and Leadership"
               description="Sponsorship also fuels the soccer development and leadership programs that build teamwork, confidence, and discipline."
             />
-            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div className="sponsor-benefits sponsor-benefits--3col">
               {onFieldBenefits.map((item) => (
-                <div key={item.label} className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gold text-navy">
-                    <item.icon className="h-5 w-5" aria-hidden="true" />
+                <div key={item.label} className="sponsor-benefit">
+                  <span className="sponsor-benefit__icon sponsor-benefit__icon--gold">
+                    <item.icon size={20} aria-hidden="true" />
                   </span>
-                  <span className="text-sm font-semibold text-navy">{item.label}</span>
+                  <span className="sponsor-benefit__label">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -125,8 +126,8 @@ export default function Sponsor() {
         </div>
       </section>
 
-      <section className="bg-navy py-20">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
+      <section className="section section--navy">
+        <div className="container">
           <SectionTitle
             eyebrow="Make a Gift"
             title="Choose Your Level of Support"

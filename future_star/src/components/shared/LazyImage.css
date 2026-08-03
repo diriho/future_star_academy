@@ -1,0 +1,24 @@
+.lazy-image {
+  position: relative;
+  overflow: hidden;
+  background: rgba(var(--color-navy-rgb), 0.05);
+}
+
+.lazy-image__skeleton {
+  position: absolute;
+  inset: 0;
+  background: rgba(var(--color-navy-rgb), 0.1);
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.lazy-image__img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.lazy-image__img.is-loaded {
+  opacity: 1;
+}

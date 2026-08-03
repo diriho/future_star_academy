@@ -1,0 +1,41 @@
+.not-found {
+  display: flex;
+  min-height: 70vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-offwhite);
+  padding-inline: 24px;
+  text-align: center;
+}
+
+.not-found__code {
+  font-family: var(--font-heading);
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: rgba(var(--color-navy-rgb), 0.1);
+}
+
+.not-found__title {
+  margin-top: 8px;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+@media (min-width: 768px) {
+  .not-found__title {
+    font-size: 1.875rem;
+  }
+}
+
+.not-found__description {
+  margin-top: 12px;
+  max-width: 28rem;
+  color: rgba(var(--color-navy-rgb), 0.7);
+}
+
+.not-found__action {
+  margin-top: 32px;
+}
