@@ -55,6 +55,12 @@
 
 @media (min-width: 1024px) {
   .program-features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .program-features-grid {
     grid-template-columns: repeat(5, 1fr);
   }
 }
@@ -74,7 +80,7 @@
 .program-story-card {
   border-radius: 12px;
   background: var(--color-white);
-  padding: 32px;
+  padding: clamp(1.25rem, 4vw, 2rem);
   box-shadow: var(--shadow-card);
   border: 1px solid rgba(var(--color-navy-rgb), 0.05);
 }

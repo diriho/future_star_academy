@@ -115,34 +115,64 @@ export default function Home() {
 
       {/* Hero */}
       <section className="home-hero">
-        <img src={soccerTrio} alt="" className="home-hero__image" />
-        <div className="home-hero__overlay" />
-        <div className="home-hero__content">
+        <div className="home-hero__container">
+          {/* Left Column */}
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="home-hero__content"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="home-hero__inner"
           >
             <h1 className="home-hero__title">
               Building Minds.
               <br />
               Developing Talents.
               <br />
-              <span className="home-hero__title-accent">Transforming Lives.</span>
+              <span className="home-hero__title-accent">
+                Transforming Lives.
+              </span>
             </h1>
+
             <p className="home-hero__subtitle">
-              Empowering children and young people through education, mentorship, leadership, and sports
-              to become future leaders on and off the field.
+              Empowering children and young people through education,
+              mentorship, leadership, and sports to become future leaders
+              on and off the field.
             </p>
+
             <div className="home-hero__actions">
-              <Button to="/get-involved" variant="gold" size="lg" icon={<ArrowRight size={16} />}>
+              <Button
+                to="/get-involved"
+                variant="gold"
+                size="lg"
+                icon={<ArrowRight size={16} />}
+              >
                 Get Involved
               </Button>
-              <Button to="/get-involved/sponsor" variant="outline" size="lg" icon={<Heart size={16} />}>
+
+              <Button
+                to="/get-involved/sponsor"
+                variant="outline"
+                size="lg"
+                icon={<Heart size={16} />}
+              >
                 Donate Now
               </Button>
             </div>
+          </motion.div>
+
+          {/* Right Column */}
+          <motion.div
+            className="home-hero__image-wrapper"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            <img
+              src={soccerTrio}
+              alt="Future Stars Academy students playing soccer"
+              className="home-hero__image"
+            />
           </motion.div>
         </div>
       </section>

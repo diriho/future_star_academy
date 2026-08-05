@@ -3,7 +3,7 @@
   max-width: 42rem;
   border-radius: 16px;
   background: var(--color-white);
-  padding: 32px;
+  padding: 24px 16px;
   box-shadow: 0 8px 40px rgba(var(--color-navy-rgb), 0.12);
   border: 1px solid rgba(var(--color-navy-rgb), 0.05);
 }
@@ -11,6 +11,16 @@
 @media (min-width: 768px) {
   .donation-widget {
     padding: 40px;
+  }
+}
+
+@media (max-width: 359px) {
+  .donation-widget__toggle-btn {
+    padding-inline: 16px;
+  }
+
+  .donation-widget__amounts {
+    grid-template-columns: 1fr;
   }
 }
 

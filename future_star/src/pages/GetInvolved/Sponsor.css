@@ -16,7 +16,7 @@
 }
 
 .sponsor-split__image img {
-  height: 100%;
+  aspect-ratio: 4 / 3;
   width: 100%;
   object-fit: cover;
 }
@@ -34,11 +34,15 @@
 .sponsor-benefits {
   margin-top: 32px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
 @media (min-width: 640px) {
+  .sponsor-benefits {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .sponsor-benefits--3col {
     grid-template-columns: repeat(2, 1fr);
   }

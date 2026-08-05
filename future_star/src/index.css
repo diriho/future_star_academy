@@ -11,9 +11,8 @@
 
   --font-heading: 'Poppins', ui-sans-serif, system-ui, sans-serif;
   --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Anton', var(--font-heading);
-
   --container-width: 1280px;
+  --page-gutter: 16px;
   --shadow-card: 0 2px 10px rgba(var(--color-navy-rgb), 0.08);
   --shadow-card-hover: 0 12px 30px rgba(var(--color-navy-rgb), 0.15);
 }
@@ -39,6 +38,7 @@ body {
   background: var(--color-white);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 h1,
@@ -97,12 +97,12 @@ ol {
   width: 100%;
   max-width: var(--container-width);
   margin-inline: auto;
-  padding-inline: 24px;
+  padding-inline: var(--page-gutter);
 }
 
 @media (min-width: 768px) {
-  .container {
-    padding-inline: 40px;
+  :root {
+    --page-gutter: 32px;
   }
 }
 
@@ -112,11 +112,11 @@ ol {
 
 /* Reusable page-section backgrounds/padding, shared across page-level sections */
 .section {
-  padding-block: 80px;
+  padding-block: clamp(3.5rem, 7vw, 5rem);
 }
 
 .section--sm {
-  padding-block: 64px;
+  padding-block: clamp(3rem, 6vw, 4rem);
 }
 
 .section--white {
@@ -151,6 +151,22 @@ ol {
 
 .mb-14 {
   margin-bottom: 56px;
+}
+
+@media (max-width: 639px) {
+  .mb-10,
+  .mb-12,
+  .mb-14 {
+    margin-bottom: 32px;
+  }
+}
+
+.layout-main,
+.container,
+[class$='__grid'],
+[class$='__content'],
+[class$='__body'] {
+  min-width: 0;
 }
 
 @keyframes spin {
