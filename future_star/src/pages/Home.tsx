@@ -124,6 +124,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
+            
             <h1 className="home-hero__title">
               Building Minds.
               <br />
