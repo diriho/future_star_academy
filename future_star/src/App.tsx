@@ -5,6 +5,7 @@ import { LoadingSpinner } from './components/shared/LoadingSpinner'
 import './App.css'
 
 const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
 const GetInvolvedLanding = lazy(() => import('./pages/GetInvolved/GetInvolvedLanding'))
 const Volunteer = lazy(() => import('./pages/GetInvolved/Volunteer'))
 const Sponsor = lazy(() => import('./pages/GetInvolved/Sponsor'))
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/get-involved" element={<GetInvolvedLanding />} />
           <Route path="/get-involved/volunteer" element={<Volunteer />} />
           <Route path="/get-involved/sponsor" element={<Sponsor />} />

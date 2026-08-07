@@ -130,9 +130,9 @@ export function Navbar() {
           <NavLink to="/" end className={navLinkClass}>
             Home
           </NavLink>
-          <a href="/#mission" className="navbar__link">
+          <NavLink to="/about" className={navLinkClass}>
             About Us
-          </a>
+          </NavLink>
           <NavDropdown label="Programs" links={programLinks} scrolled={solid} />
           <NavDropdown label="Get Involved" links={getInvolvedLinks} scrolled={solid} />
           <a href="/#news" className="navbar__link">
@@ -177,9 +177,9 @@ export function Navbar() {
               <Link to="/" onClick={() => setMobileOpen(false)} className="navbar__mobile-link">
                 Home
               </Link>
-              <a href="/#mission" onClick={() => setMobileOpen(false)} className="navbar__mobile-link">
+              <Link to="/about" onClick={() => setMobileOpen(false)} className="navbar__mobile-link">
                 About Us
-              </a>
+              </Link>
               <p className="navbar__mobile-group-label">Programs</p>
               {programLinks.map((link) => (
                 <Link key={link.to} to={link.to} onClick={() => setMobileOpen(false)} className="navbar__mobile-sublink">
