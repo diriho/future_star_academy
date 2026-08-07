@@ -141,9 +141,9 @@ export function Navbar() {
           <a href="/#gallery" className="navbar__link">
             Gallery
           </a>
-          <a href="/#contact" className="navbar__link">
+          <NavLink to="/contact" className={navLinkClass}>
             Contact Us
-          </a>
+          </NavLink>
         </nav>
 
         <div className="navbar__actions">
@@ -198,9 +198,9 @@ export function Navbar() {
               <a href="/#gallery" onClick={() => setMobileOpen(false)} className="navbar__mobile-link">
                 Gallery
               </a>
-              <a href="/#contact" onClick={() => setMobileOpen(false)} className="navbar__mobile-link">
+              <Link to="/contact" onClick={() => setMobileOpen(false)} className="navbar__mobile-link">
                 Contact Us
-              </a>
+              </Link>
               <Link
                 to="/get-involved/sponsor"
                 onClick={() => setMobileOpen(false)}

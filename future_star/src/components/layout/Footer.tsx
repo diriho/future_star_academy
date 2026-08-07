@@ -15,13 +15,13 @@ const resourceLinks = [
   { label: 'Photo Gallery', to: '/#gallery' },
   { label: 'Our Board', to: '/#mission' },
   { label: 'Our Founders', to: '/#mission' },
-  { label: 'Contact Us', to: '/#contact' },
+  { label: 'Contact Us', to: '/contact' },
   { label: 'Donate', to: '/get-involved/sponsor' },
 ]
 
 const socialLinks = [
-  { label: 'Facebook', href: 'https://facebook.com', Icon: FacebookIcon },
-  { label: 'Instagram', href: 'https://instagram.com', Icon: InstagramIcon },
+  { label: 'Instagram', href: 'https://www.instagram.com/futurestarsacademyofficial/', Icon: InstagramIcon },
+  { label: 'Facebook', href: 'https://www.facebook.com/FutureStarsAcademyOfficial', Icon: FacebookIcon },
   { label: 'Twitter', href: 'https://twitter.com', Icon: TwitterIcon },
   { label: 'YouTube', href: 'https://youtube.com', Icon: YoutubeIcon },
 ]

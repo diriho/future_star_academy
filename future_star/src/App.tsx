@@ -13,6 +13,7 @@ const Education = lazy(() => import('./pages/Programs/Education'))
 const Sports = lazy(() => import('./pages/Programs/Sports'))
 const Mentorship = lazy(() => import('./pages/Programs/Mentorship'))
 const CommunityServices = lazy(() => import('./pages/Programs/CommunityServices'))
+const Contact = lazy(() => import('./pages/Contact'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function PageFallback() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/programs/sports" element={<Sports />} />
           <Route path="/programs/mentorship" element={<Mentorship />} />
           <Route path="/programs/community-services" element={<CommunityServices />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

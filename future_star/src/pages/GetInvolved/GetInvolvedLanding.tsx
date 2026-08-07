@@ -45,7 +45,7 @@ export default function GetInvolvedLanding() {
       <CTASection
         title="Not Sure Where to Start?"
         subtitle="Reach out and our team will help you find the best way to make an impact."
-        primary={{ label: 'Contact Us', to: '/#contact' }}
+        primary={{ label: 'Contact Us', to: '/contact' }}
         secondary={{ label: 'Donate Now', to: '/get-involved/sponsor' }}
       />
     </>
