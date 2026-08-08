@@ -1,4 +1,5 @@
 import type { ComponentType, SVGProps } from 'react'
+import './TeamCard.css'
 
 interface SocialLink {
   label: string
