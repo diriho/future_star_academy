@@ -93,22 +93,19 @@ const About = () => {
             <div className="about__story-content">
               <span className="about__section-eyebrow">Our Journey</span>
               <h2>Our Story</h2>
-              <p>
-                Future Stars Academy began with a simple belief: every child deserves the chance to
-                discover what they&apos;re capable of, regardless of the community they grow up in. What
-                started as a small group of volunteers running weekend soccer clinics grew into a full
-                youth development organization pairing academic support, mentorship, and athletics under
-                one roof.
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum placerat turpis, ac aliquet est. 
+                Aliquam hendrerit ornare aliquet. Vivamus molestie felis ut ullamcorper fringilla. Suspendisse potenti. 
               </p>
+
               <p>
-                Since then, we&apos;ve partnered with local schools, coaches, and families to build a
-                program that meets kids where they are &mdash; in the classroom, on the field, and in
-                their communities &mdash; and helps them build the confidence and skills to go further.
+                Etiam maximus dolor ligula, eu convallis odio pellentesque quis. Mauris imperdiet varius placerat. 
+                Curabitur lacinia, neque quis ornare fermentum, nunc sapien cursus justo, eu convallis nunc libero sed velit. 
+                Vivamus posuere, nibh non tincidunt accumsan, nunc lorem varius dui, vitae vehicula est erat a felis
               </p>
-              <p>
-                Today, Future Stars Academy continues to grow, one student, one team, one community at a
-                time, guided by the same mission that started it all: creating opportunities and
-                inspiring greatness.
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum placerat turpis, ac aliquet est. 
+                Aliquam hendrerit ornare aliquet. Vivamus molestie felis ut ullamcorper fringilla.
+                Vestibulum suscipit congue sapien sed dapibus. 
               </p>
             </div>
             <div className="about__story-image">

@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { Mail, MapPin, Send } from 'lucide-react'
+import { Globe, Mail, MapPin, Phone, Send } from 'lucide-react'
 import { HeroSection } from '../components/shared/HeroSection'
 import { SectionTitle } from '../components/shared/SectionTitle'
 import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from '../components/shared/SocialIcons'
@@ -92,6 +92,7 @@ export default function Contact() {
             />
 
             <div className="contact-info__list">
+               {/*Email info*/}
               <a href="mailto:info@fsaliberia.org" className="contact-info__item">
                 <span className="contact-info__icon">
                   <Mail size={20} aria-hidden="true" />
@@ -101,14 +102,52 @@ export default function Contact() {
                   <p className="contact-info__value">info@fsaliberia.org</p>
                 </div>
               </a>
+
+              {/*Website Address*/}
+              <div className="contact-info__item">
+                <span className="contact-info__icon">
+                  <Globe size={20} aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="contact-info__label">Website</p>
+                  <p className="contact-info__value">www.fsaliberia.org</p>
+                </div>
+              </div>
+
+              {/* MapPin icon */}
+                {/*USA location */}
               <div className="contact-info__item">
                 <span className="contact-info__icon">
                   <MapPin size={20} aria-hidden="true" />
                 </span>
                 <div>
                   <p className="contact-info__label">Location</p>
-                  <p className="contact-info__value">USA & Liberia</p>
-                </div>
+                  <p className="contact-info__value">USA </p>
+                  <p>xx Main Street, RI, USA</p>
+                </div> 
+              </div>
+
+               {/*Liberia location */}
+               <div className="contact-info__item">
+                <span className="contact-info__icon">
+                  <MapPin size={20} aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="contact-info__label">Location</p>
+                  <p className="contact-info__value">Liberia</p>
+                  <p>xx  Street, Liberia</p>
+                </div> 
+              </div>
+
+              {/*Phone info*/}
+              <div className="contact-info__item">
+                <span className="contact-info__icon">
+                  <Phone size={20} aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="contact-info__label">Phone</p>
+                  <p className="contact-info__value">+1 (xxx) xxx-xxxx</p>
+                </div> 
               </div>
             </div>
 

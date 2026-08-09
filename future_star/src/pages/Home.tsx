@@ -53,11 +53,11 @@ const missionCards = [
 ]
 
 const programStrip = [
-  { icon: BookOpen, label: 'Academic Enrichment & Tutoring' },
-  { icon: Trophy, label: 'Soccer Training & Talent Development' },
-  { icon: Handshake, label: 'Leadership & Character Building' },
-  { icon: Users, label: 'Mentorship & Life Skills' },
-  { icon: Megaphone, label: 'Community Outreach & Youth Empowerment' },
+  { icon: BookOpen, label: 'Academic Enrichment & Tutoring', to: '/programs/education' },
+  { icon: Trophy, label: 'Soccer Training & Talent Development', to: '/programs/sports' },
+  { icon: Handshake, label: 'Leadership & Character Building', to: '/programs/mentorship' },
+  { icon: Users, label: 'Mentorship & Life Skills', to: '/programs/mentorship' },
+  { icon: Megaphone, label: 'Community Outreach & Youth Empowerment', to: '/programs/community-services' },
 ]
 
 const getInvolvedStrip = [
@@ -224,7 +224,9 @@ export default function Home() {
                 className="programs-strip__item"
               >
                 <div className="programs-strip__icon">
-                  <item.icon size={24} strokeWidth={2} aria-hidden="true" />
+                  <Link to={item.to}>
+                    <item.icon size={24} strokeWidth={2} aria-hidden="true" />
+                  </Link>
                 </div>
                 <p className="programs-strip__label">{item.label}</p>
               </motion.div>

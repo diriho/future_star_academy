@@ -4,7 +4,7 @@ import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from '../shared
 import './Footer.css'
 
 const quickLinks = [
-  { label: 'About Us', to: '/#mission' },
+  { label: 'About Us', to: '/about' },
   { label: 'Our Mission', to: '/#mission' },
   { label: 'Programs', to: '/programs/education' },
   { label: 'Get Involved', to: '/get-involved' },
@@ -13,8 +13,7 @@ const quickLinks = [
 
 const resourceLinks = [
   { label: 'Photo Gallery', to: '/#gallery' },
-  { label: 'Our Board', to: '/#mission' },
-  { label: 'Our Founders', to: '/#mission' },
+  { label: 'Our Team', to: '/about' },
   { label: 'Contact Us', to: '/contact' },
   { label: 'Donate', to: '/get-involved/sponsor' },
 ]
@@ -30,6 +29,7 @@ export function Footer() {
   return (
     <footer className="footer">
       <div id="contact" className="container footer__grid">
+        {/*Footer section */}
         <div>
           <Link to="/" className="footer__logo-link">
             <img src="/logo.png" alt="Future Stars Academy" className="footer__logo-img" />
@@ -48,6 +48,7 @@ export function Footer() {
           </a>
         </div>
 
+        {/*Quick links section */}
         <div>
           <h3 className="footer__heading">Quick Links</h3>
           <ul className="footer__list">
@@ -61,6 +62,7 @@ export function Footer() {
           </ul>
         </div>
 
+        {/*Resources section */}
         <div>
           <h3 className="footer__heading">Resources</h3>
           <ul className="footer__list">
@@ -74,6 +76,7 @@ export function Footer() {
           </ul>
         </div>
 
+        {/*Social Media section */}
         <div>
           <h3 className="footer__heading">Stay Connected</h3>
           <p className="footer__blurb">Follow us on social media for updates, stories, and upcoming events.</p>
@@ -94,6 +97,7 @@ export function Footer() {
         </div>
       </div>
 
+      {/*Copyright section */}
       <div className="footer__bottom">
         <p className="footer__copyright">
           © {new Date().getFullYear()} Future Stars Academy. All rights reserved.
