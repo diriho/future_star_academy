@@ -53,6 +53,7 @@ const visionGoals = [
   'Develop youth leadership',
   'Increase educational access',
   'Empower underserved communities',
+  'Developing professional athletes through soccer.',
 ]
 
 export default function Partner() {

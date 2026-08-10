@@ -7,6 +7,7 @@ import { TeamCard } from '../components/shared/TeamCard'
 import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from '../components/shared/SocialIcons'
 import teamHuddle from '../assets/team-huddle.jpg'
 import './About.css'
+import charlesGongar from '../assets/team/charles_gongar.jpeg'
 
 const missionCards = [
   {
@@ -124,21 +125,21 @@ const About = () => {
             </div>
             <div className="about__team-grid">
               <TeamCard
-                image="/team/john_doe.jpg"
-                name="John Doe"
-                role="Founder & CEO"
-                bio="John is passionate about education and has dedicated his life to helping children reach their full potential."
+                image= {charlesGongar}
+                name="Mr. Charles T. Gongar, Jr."
+                role="Co-Founder & CEO"
+                bio="Charles is passionate about education and has dedicated his life to helping children reach their full potential."
                 socialLinks={[
                   { label: 'Facebook', href: 'https://facebook.com/johndoe', Icon: FacebookIcon },
-                  { label: 'Instagram', href: 'https://instagram.com/johndoe', Icon: InstagramIcon },
+                  { label: 'Instagram', href: '', Icon: InstagramIcon },
                   { label: 'Twitter', href: 'https://twitter.com/johndoe', Icon: TwitterIcon },
                   { label: 'YouTube', href: 'https://youtube.com/johndoe', Icon: YoutubeIcon },
                 ]}
               />
               <TeamCard
                 image="/team/jane_smith.jpg"
-                name="Jane Smith"
-                role="Program Director"
+                name="Mr. Alexander Zean Soe"
+                role="President & Co-Founder"
                 bio="Jane has over 10 years of experience in educational program development and is committed to creating impactful learning experiences."
                 socialLinks={[
                   { label: 'Facebook', href: 'https://facebook.com/janesmith', Icon: FacebookIcon },
