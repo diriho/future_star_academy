@@ -56,7 +56,7 @@ const About = () => {
         <section id="mission" className="mission-section">
           <div className="container mission-section__grid">
             <SectionTitle
-              eyebrow="Our Mission"
+              eyebrow="Our Mission "
               title="Creating Opportunities. Inspiring Greatness."
               description="Future Stars Academy is a youth development organization committed to providing educational support, mentorship, leadership training, and soccer development for children and communities."
             />
