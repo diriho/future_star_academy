@@ -3,6 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import { webhookRouter } from './routes/webhook.js'
 import { checkoutRouter } from './routes/checkout.js'
+import { newsEventsRouter } from './routes/newsEvents.js'
 import './db.js'
 
 const app = express()
@@ -15,6 +16,7 @@ app.use('/api', webhookRouter)
 
 app.use(express.json())
 app.use('/api', checkoutRouter)
+app.use('/api', newsEventsRouter)
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }))
 
