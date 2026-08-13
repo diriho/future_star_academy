@@ -94,19 +94,23 @@ const About = () => {
             <div className="about__story-content">
               <span className="about__section-eyebrow">Our Journey</span>
               <h2>Our Story</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum placerat turpis, ac aliquet est. 
-                Aliquam hendrerit ornare aliquet. Vivamus molestie felis ut ullamcorper fringilla. Suspendisse potenti. 
+              <p>
+                Future Stars Academy started with a simple reality: talent is everywhere, but opportunity isn’t.
               </p>
 
               <p>
-                Etiam maximus dolor ligula, eu convallis odio pellentesque quis. Mauris imperdiet varius placerat. 
-                Curabitur lacinia, neque quis ornare fermentum, nunc sapien cursus justo, eu convallis nunc libero sed velit. 
-                Vivamus posuere, nibh non tincidunt accumsan, nunc lorem varius dui, vitae vehicula est erat a felis
+                Growing up playing soccer, our founder Charles T. Gongar Jr. loved the game, 
+                but lacked the structured coaching, academic support, and mentorship needed to take his potential 
+                further. After playing collegiate soccer in the US and spending years working in human services and 
+                youth coaching, he realized young athletes needed more than just a pitch—they needed a full support system.
               </p>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum placerat turpis, ac aliquet est. 
-                Aliquam hendrerit ornare aliquet. Vivamus molestie felis ut ullamcorper fringilla.
-                Vestibulum suscipit congue sapien sed dapibus. 
+              <p>
+                Together with a team of like-minded coaches and educators, FSA was built to bridge that gap. 
+                We combine structured soccer training with education, leadership development, and mentorship for 
+                youth in the U.S. and Liberia. We aren't just training better players; we're giving the next generation 
+                the resources, guidance, and opportunities we wished we had.
+
               </p>
             </div>
             <div className="about__story-image">
@@ -128,9 +132,9 @@ const About = () => {
                 image= {charlesGongar}
                 name="Mr. Charles T. Gongar, Jr."
                 role="Co-Founder & CEO"
-                bio="Charles is passionate about education and has dedicated his life to helping children reach their full potential."
+                bio="Charles is a former collegiate soccer player with a background in human services and coaching, he empowers youth through education, sports, and mentorship."
                 socialLinks={[
-                  { label: 'Facebook', href: 'https://facebook.com/johndoe', Icon: FacebookIcon },
+                  { label: 'Facebook', href: 'https://linkedin.com/johndoe', Icon: FacebookIcon },
                   { label: 'Instagram', href: '', Icon: InstagramIcon },
                   { label: 'Twitter', href: 'https://twitter.com/johndoe', Icon: TwitterIcon },
                   { label: 'YouTube', href: 'https://youtube.com/johndoe', Icon: YoutubeIcon },
@@ -140,7 +144,7 @@ const About = () => {
                 image="/team/jane_smith.jpg"
                 name="Mr. Alexander Zean Soe"
                 role="President & Co-Founder"
-                bio="Jane has over 10 years of experience in educational program development and is committed to creating impactful learning experiences."
+                bio="Alexander is a dedicated educator with a strong background in curriculum design and student development, he is committed to fostering a love of learning in every student."
                 socialLinks={[
                   { label: 'Facebook', href: 'https://facebook.com/janesmith', Icon: FacebookIcon },
                   { label: 'Instagram', href: 'https://instagram.com/janesmith', Icon: InstagramIcon },
