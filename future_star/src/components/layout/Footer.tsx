@@ -8,7 +8,7 @@ const quickLinks = [
   { label: 'Our Mission', to: '/#mission' },
   { label: 'Programs', to: '/programs/education' },
   { label: 'Get Involved', to: '/get-involved' },
-  { label: 'News & Events', to: '/#news' },
+  { label: 'News & Events', to: '/news-events' },
 ]
 
 const resourceLinks = [

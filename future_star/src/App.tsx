@@ -14,6 +14,7 @@ const Education = lazy(() => import('./pages/Programs/Education'))
 const Sports = lazy(() => import('./pages/Programs/Sports'))
 const Mentorship = lazy(() => import('./pages/Programs/Mentorship'))
 const CommunityServices = lazy(() => import('./pages/Programs/CommunityServices'))
+const NewsEvents = lazy(() => import('./pages/NewsEvents'))
 const Contact = lazy(() => import('./pages/Contact'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/programs/sports" element={<Sports />} />
           <Route path="/programs/mentorship" element={<Mentorship />} />
           <Route path="/programs/community-services" element={<CommunityServices />} />
+          <Route path="/news-events" element={<NewsEvents />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Route>

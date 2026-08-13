@@ -135,9 +135,9 @@ export function Navbar() {
           </NavLink>
           <NavDropdown label="Programs" links={programLinks} scrolled={solid} />
           <NavDropdown label="Get Involved" links={getInvolvedLinks} scrolled={solid} />
-          <a href="/#news" className="navbar__link">
+          <NavLink to="/news-events" className={navLinkClass}>
             News &amp; Events
-          </a>
+          </NavLink>
           <a href="/#gallery" className="navbar__link">
             Gallery
           </a>
@@ -192,9 +192,9 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <a href="/#news" onClick={() => setMobileOpen(false)} className="navbar__mobile-link">
+              <Link to="/news-events" onClick={() => setMobileOpen(false)} className="navbar__mobile-link">
                 News &amp; Events
-              </a>
+              </Link>
               <a href="/#gallery" onClick={() => setMobileOpen(false)} className="navbar__mobile-link">
                 Gallery
               </a>
