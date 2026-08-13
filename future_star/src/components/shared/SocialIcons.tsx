@@ -29,6 +29,14 @@ export function TwitterIcon(props: SVGProps<SVGSVGElement>) {
   )
 }
 
+export function LinkedInIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M5.37 3a2.37 2.37 0 1 1-4.74 0 2.37 2.37 0 0 1 4.74 0ZM.83 8.19h4.35V22H.83V8.19ZM7.9 8.19h4.17v1.89h.06c.58-1.1 2-2.26 4.12-2.26 4.41 0 5.23 2.9 5.23 6.68V22h-4.35v-6.65c0-1.59-.03-3.63-2.21-3.63-2.22 0-2.56 1.73-2.56 3.52V22H8V8.19h-.1Z" />
+    </svg>
+  )
+}
+
 export function YoutubeIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>

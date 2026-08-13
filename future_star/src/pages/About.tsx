@@ -4,7 +4,7 @@ import { SectionTitle } from '../components/shared/SectionTitle'
 import { FeatureCard } from '../components/shared/FeatureCard'
 import { StatsSection } from '../components/shared/StatsSection'
 import { TeamCard } from '../components/shared/TeamCard'
-import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from '../components/shared/SocialIcons'
+import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon, LinkedInIcon } from '../components/shared/SocialIcons'
 import teamHuddle from '../assets/team-huddle.jpg'
 import './About.css'
 import charlesGongar from '../assets/team/charles_gongar.jpeg'
@@ -134,7 +134,7 @@ const About = () => {
                 role="Co-Founder & CEO"
                 bio="Charles is a former collegiate soccer player with a background in human services and coaching, he empowers youth through education, sports, and mentorship."
                 socialLinks={[
-                  { label: 'Facebook', href: 'https://linkedin.com/johndoe', Icon: FacebookIcon },
+                  { label: 'LinkedIn', href: 'https://linkedin.com/in/charles-t-gongar-jr-6157b1325/', Icon: LinkedInIcon },
                   { label: 'Instagram', href: '', Icon: InstagramIcon },
                   { label: 'Twitter', href: 'https://twitter.com/johndoe', Icon: TwitterIcon },
                   { label: 'YouTube', href: 'https://youtube.com/johndoe', Icon: YoutubeIcon },
