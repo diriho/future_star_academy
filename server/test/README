@@ -1,0 +1,32 @@
+# Backend tests
+
+Uses Node's built-in test runner (`node:test`). Run all of them with:
+
+    npm test
+
+(equivalent to `node --test`, run from the `server/` directory)
+
+## Files
+
+### mapping.test.js
+Pure unit tests for `mapPageToNewsEvent` in `services/notions.js` — the function that
+turns a raw Notion page into the JSON shape returned by `/api/news-events`. No network
+calls; every Notion property type (title, rich_text, select, multi_select, date,
+checkbox, url, place) is tested against both a populated value and its missing/empty
+edge case, using hand-built fixture pages.
+
+### config.test.js
+Confirms `getPublishedNewsEvents()` rejects with a clear, actionable error when
+`NOTION_API_KEY` or `NOTION_DATABASE_ID` isn't set, instead of failing with a raw
+Notion SDK error. No network calls. Must not run in the same process as a test that
+successfully resolves the data source id (that gets cached at module scope) — this is
+safe because `node --test` runs each test file in its own process.
+
+### query.test.js
+Integration tests that call the real Notion database configured in `server/.env`:
+checks the shape/types of every returned field, that `Status` is always `Published`,
+that `Published Date` is never in the future, that Slugs are unique, that results are
+sorted newest-first, and both branches of `getPublishedNewsEventBySlug` (found and
+not-found). Skips (not fails) with a clear message if `NOTION_API_KEY` /
+`NOTION_DATABASE_ID` aren't set. Because it hits the live API, it's the slowest file
+and will fail if the integration's token or database access changes.
