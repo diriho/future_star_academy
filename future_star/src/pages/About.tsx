@@ -125,7 +125,6 @@ const About = () => {
             <div className="about__team-header">
               <span className="about__section-eyebrow">Our People</span>
               <h2>Meet our Team</h2>
-              <p>This our Team Card</p>
             </div>
             <div className="about__team-grid">
               <TeamCard
