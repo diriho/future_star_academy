@@ -64,7 +64,7 @@ function getPlace(prop) {
   return prop?.place?.name ?? prop?.place?.address ?? null
 }
 
-function mapPageToNewsEvent(page) {
+export function mapPageToNewsEvent(page) {
   const props = page.properties
   return {
     id: page.id,
