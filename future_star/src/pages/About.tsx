@@ -8,6 +8,7 @@ import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon, LinkedInIcon } f
 import teamHuddle from '../assets/team-huddle.jpg'
 import './About.css'
 import charlesGongar from '../assets/team/charles_gongar.jpeg'
+import alexanderZean from '../assets/team/alexander_zean.jpeg'
 
 const missionCards = [
   {
@@ -140,7 +141,7 @@ const About = () => {
                 ]}
               />
               <TeamCard
-                image="/team/jane_smith.jpg"
+                image={alexanderZean}
                 name="Mr. Alexander Zean Soe"
                 role="President & Co-Founder"
                 bio="Alexander is dedicated to helping young people discover their potential, build character, develop their talents, and become leaders both on and off the field."

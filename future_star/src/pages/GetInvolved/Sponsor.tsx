@@ -8,7 +8,7 @@ import { HeroSection } from '../../components/shared/HeroSection'
 import { SectionTitle } from '../../components/shared/SectionTitle'
 import { DonationWidget } from './DonationWidget'
 import classroom1 from '../../assets/classroom-1.jpg'
-import soccerTrio from '../../assets/soccer-trio.jpg'
+import teamHuddle from '../../assets/team-huddle.jpg'
 import './Sponsor.css'
 
 const wholeChildBenefits = [
@@ -103,7 +103,7 @@ export default function Sponsor() {
               transition={{ duration: 0.5 }}
               className="sponsor-split__image"
             >
-              <img src={soccerTrio} alt="Future Stars Academy soccer players" />
+              <img src={teamHuddle} alt="Future Stars Academy team huddle" />
             </motion.div>
           </div>
           <div className="sponsor-split__content--order-1">
