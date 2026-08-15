@@ -143,7 +143,7 @@ const About = () => {
                 image="/team/jane_smith.jpg"
                 name="Mr. Alexander Zean Soe"
                 role="President & Co-Founder"
-                bio="Alexander is a dedicated educator with a strong background in curriculum design and student development, he is committed to fostering a love of learning in every student."
+                bio="Alexander is dedicated to helping young people discover their potential, build character, develop their talents, and become leaders both on and off the field."
                 socialLinks={[
                   { label: 'Facebook', href: 'https://facebook.com/janesmith', Icon: FacebookIcon },
                   { label: 'Instagram', href: 'https://instagram.com/janesmith', Icon: InstagramIcon },
