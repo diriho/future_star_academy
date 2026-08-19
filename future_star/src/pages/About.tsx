@@ -4,7 +4,7 @@ import { SectionTitle } from '../components/shared/SectionTitle'
 import { FeatureCard } from '../components/shared/FeatureCard'
 import { StatsSection } from '../components/shared/StatsSection'
 import { TeamCard } from '../components/shared/TeamCard'
-import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon, LinkedInIcon } from '../components/shared/SocialIcons'
+import { FacebookIcon, InstagramIcon, YoutubeIcon, LinkedInIcon } from '../components/shared/SocialIcons'
 import teamHuddle from '../assets/team-huddle.jpg'
 import './About.css'
 import charlesGongar from '../assets/team/charles_gongar.jpeg'
@@ -128,6 +128,7 @@ const About = () => {
               <h2>Meet our Team</h2>
             </div>
             <div className="about__team-grid">
+              {/*CEO card */}
               <TeamCard
                 image= {charlesGongar}
                 name="Mr. Charles T. Gongar, Jr."
@@ -136,23 +137,23 @@ const About = () => {
                 socialLinks={[
                   { label: 'LinkedIn', href: 'https://linkedin.com/in/charles-t-gongar-jr-6157b1325/', Icon: LinkedInIcon },
                   { label: 'Instagram', href: '', Icon: InstagramIcon },
-                  { label: 'Twitter', href: 'https://twitter.com/johndoe', Icon: TwitterIcon },
                   { label: 'YouTube', href: 'https://youtube.com/johndoe', Icon: YoutubeIcon },
                 ]}
               />
+
+              {/** President card */}
               <TeamCard
                 image={alexanderZean}
                 name="Mr. Alexander Zean Soe"
                 role="President & Co-Founder"
                 bio="Alexander is dedicated to helping young people discover their potential, build character, develop their talents, and become leaders both on and off the field."
                 socialLinks={[
+                  { label: 'LinkedIn', href: 'https://linkedin.com/in/charles-t-gongar-jr-6157b1325/', Icon: LinkedInIcon },
                   { label: 'Facebook', href: 'https://facebook.com/janesmith', Icon: FacebookIcon },
                   { label: 'Instagram', href: 'https://instagram.com/janesmith', Icon: InstagramIcon },
-                  { label: 'Twitter', href: 'https://twitter.com/janesmith', Icon: TwitterIcon },
-                  { label: 'YouTube', href: 'https://youtube.com/janesmith', Icon: YoutubeIcon },
                 ]}
               />
-              {/* Add more TeamCard components as needed */}
+              
             </div>
           </div>
         </section>
