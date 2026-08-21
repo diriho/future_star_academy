@@ -244,6 +244,7 @@ export default function Home() {
             light
             description="With the support of our partners, volunteers, and donors, we are creating brighter futures for children and strengthening communities."
           />
+          
           <StatsSection
             stats={[
               { value: 500, suffix: '+', label: 'Youth Impacted' },
