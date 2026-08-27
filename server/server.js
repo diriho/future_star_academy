@@ -6,6 +6,7 @@ import { checkoutRouter } from './routes/checkout.js'
 import { newsEventsRouter } from './routes/newsEvents.js'
 import './db.js'
 
+// start an express app
 const app = express()
 const PORT = process.env.PORT || 4000
 
