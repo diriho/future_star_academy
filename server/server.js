@@ -15,6 +15,7 @@ app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }))
 // Mounted before express.json() — the webhook route parses its own raw body internally.
 app.use('/api', webhookRouter)
 
+// app use the routes 
 app.use(express.json())
 app.use('/api', checkoutRouter)
 app.use('/api', newsEventsRouter)
