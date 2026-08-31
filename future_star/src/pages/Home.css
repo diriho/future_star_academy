@@ -49,6 +49,7 @@
   position: relative;
   height: clamp(18rem, 55vw, 32rem);
   overflow: hidden;
+  transform: translateZ(30);
 }
 
 .home-hero__image {
@@ -88,6 +89,7 @@
 
   .home-hero__image-wrapper::after {
     background: linear-gradient(to right, var(--color-navy), transparent 32%);
+    
   }
 }
 
