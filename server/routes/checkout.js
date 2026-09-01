@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import { getStripe } from '../stripeClient.js'
-import { insertDonation } from '../db.js'
 import { getClientUrl } from '../clientUrl.js'
 
 export const checkoutRouter = Router()
@@ -44,8 +43,6 @@ checkoutRouter.post('/create-checkout-session', async (req, res) => {
       // leave our site to authenticate (3DS challenges, bank redirects, wallets).
       return_url: `${clientUrl}/get-involved/sponsor/complete?session_id={CHECKOUT_SESSION_ID}`,
     })
-
-    insertDonation({ stripeSession: session.id, amount: unitAmount, recurring: isRecurring })
 
     res.json({ clientSecret: session.client_secret })
   } catch (err) {

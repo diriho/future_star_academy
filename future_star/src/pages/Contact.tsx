@@ -123,7 +123,7 @@ export default function Contact() {
                 <div>
                   <p className="contact-info__label">Location</p>
                   <p className="contact-info__value">USA </p>
-                  <p>xx Main Street, RI, USA</p>
+                  <p>36 Vicksburg Street Providence RI 02904</p>
                 </div> 
               </div>
 
@@ -135,7 +135,7 @@ export default function Contact() {
                 <div>
                   <p className="contact-info__label">Location</p>
                   <p className="contact-info__value">Liberia</p>
-                  <p>xx  Street, Liberia</p>
+                  <p>Montserrado Co, Republic of Liberia. </p>
                 </div> 
               </div>
 
@@ -167,6 +167,7 @@ export default function Contact() {
             </div>
           </div>
 
+          {/*Contact form */}
           <form onSubmit={handleSubmit(onSubmit)} className="contact-form" noValidate>
             <div className="contact-form__field">
               <label htmlFor="name" className="contact-form__label">
