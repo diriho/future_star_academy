@@ -1,8 +1,5 @@
-import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
-import toast from 'react-hot-toast'
-import { useSearchParams } from 'react-router-dom'
 import { Backpack, BookOpen, Goal, HeartHandshake, Shirt, Utensils } from 'lucide-react'
 import { HeroSection } from '../../components/shared/HeroSection'
 import { SectionTitle } from '../../components/shared/SectionTitle'
@@ -25,19 +22,6 @@ const onFieldBenefits = [
 ]
 
 export default function Sponsor() {
-  const [searchParams, setSearchParams] = useSearchParams()
-
-  useEffect(() => {
-    const status = searchParams.get('donation')
-    if (status === 'success') {
-      toast.success('Thank you! Your donation was received.')
-      setSearchParams({}, { replace: true })
-    } else if (status === 'cancelled') {
-      toast('Your donation was cancelled — no charge was made.', { icon: 'ℹ️' })
-      setSearchParams({}, { replace: true })
-    }
-  }, [searchParams, setSearchParams])
-
   return (
     <>
       <Helmet>

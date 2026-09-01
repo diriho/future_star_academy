@@ -4,7 +4,16 @@ export interface CheckoutSessionRequest {
 }
 
 export interface CheckoutSessionResponse {
-  url: string
+  clientSecret: string
+}
+
+export interface SessionStatus {
+  status: 'open' | 'complete' | 'expired' | null
+  paymentStatus: 'paid' | 'unpaid' | 'no_payment_required' | null
+  amountTotal: number | null
+  currency: string | null
+  customerEmail: string | null
+  recurring: boolean
 }
 
 export async function createCheckoutSession(
@@ -19,6 +28,17 @@ export async function createCheckoutSession(
   if (!res.ok) {
     const body = await res.json().catch(() => null)
     throw new Error(body?.error ?? 'Something went wrong starting your donation. Please try again.')
+  }
+
+  return res.json()
+}
+
+export async function fetchSessionStatus(sessionId: string): Promise<SessionStatus> {
+  const res = await fetch(`/api/session-status?session_id=${encodeURIComponent(sessionId)}`)
+
+  if (!res.ok) {
+    const body = await res.json().catch(() => null)
+    throw new Error(body?.error ?? 'Unable to confirm your donation status right now.')
   }
 
   return res.json()

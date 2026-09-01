@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { motion } from 'framer-motion'
-import { Heart, RefreshCw } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { cn } from '../../lib/utils'
-import { createCheckoutSession } from '../../lib/api'
-import { LoadingSpinner } from '../../components/shared/LoadingSpinner'
 import './DonationWidget.css'
 
 const PRESETS = {
@@ -18,9 +17,9 @@ interface CustomAmountForm {
 }
 
 export function DonationWidget() {
+  const navigate = useNavigate()
   const [frequency, setFrequency] = useState<'once' | 'monthly'>('once')
   const [selected, setSelected] = useState<number | 'custom'>(50)
-  const [submitting, setSubmitting] = useState(false)
 
   const {
     register,
@@ -36,23 +35,18 @@ export function DonationWidget() {
     setSelected(PRESETS[next][1])
   }
 
-  async function startCheckout(amount: number) {
+  // The amount lives in the URL rather than router state so the checkout page
+  // survives a refresh or a shared link without dropping back to $0.
+  function goToCheckout(amount: number) {
     if (!amount || amount < 1) {
       toast.error('Please enter a donation amount of at least $1.')
       return
     }
-    setSubmitting(true)
-    try {
-      const { url } = await createCheckoutSession({ amount, recurring: frequency === 'monthly' })
-      window.location.assign(url)
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
-      setSubmitting(false)
-    }
+    navigate(`/get-involved/sponsor/checkout?amount=${amount}&frequency=${frequency}`)
   }
 
   function onSubmit(data: CustomAmountForm) {
-    startCheckout(Number(data.customAmount))
+    goToCheckout(Number(data.customAmount))
   }
 
   const isCustom = selected === 'custom'
@@ -128,18 +122,11 @@ export function DonationWidget() {
 
       <button
         type="button"
-        disabled={submitting}
-        onClick={() => (isCustom ? handleSubmit(onSubmit)() : startCheckout(selected as number))}
+        onClick={() => (isCustom ? handleSubmit(onSubmit)() : goToCheckout(selected as number))}
         className="donation-widget__submit"
       >
-        {submitting ? (
-          <LoadingSpinner size="sm" />
-        ) : frequency === 'monthly' ? (
-          <RefreshCw size={16} aria-hidden="true" />
-        ) : (
-          <Heart size={16} aria-hidden="true" />
-        )}
-        {submitting ? 'Redirecting to checkout…' : frequency === 'monthly' ? 'Become a Monthly Sponsor' : 'Donate Once'}
+        Continue to Payment
+        <ArrowRight size={16} aria-hidden="true" />
       </button>
       <p className="donation-widget__footnote">
         {isCustom && customAmount ? `You're donating $${customAmount}${frequency === 'monthly' ? '/month' : ''}. ` : ''}

@@ -1,0 +1,113 @@
+.donation-complete {
+  min-height: 70vh;
+}
+
+.donation-complete__container {
+  max-width: 34rem;
+}
+
+.donation-complete__card {
+  border-radius: 16px;
+  background: var(--color-white);
+  padding: 40px 24px;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(var(--color-navy-rgb), 0.12);
+  border: 1px solid rgba(var(--color-navy-rgb), 0.05);
+}
+
+@media (min-width: 768px) {
+  .donation-complete__card {
+    padding: 56px 40px;
+  }
+}
+
+.donation-complete__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.donation-complete__icon--success {
+  background: rgba(var(--color-gold-rgb), 0.15);
+  color: var(--color-gold-dark);
+}
+
+.donation-complete__icon--pending {
+  background: rgba(var(--color-navy-rgb), 0.08);
+  color: var(--color-navy-light);
+}
+
+.donation-complete__icon--error {
+  background: rgba(220, 38, 38, 0.08);
+  color: #b91c1c;
+}
+
+.donation-complete__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.donation-complete__message {
+  margin-top: 12px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(var(--color-navy-rgb), 0.7);
+}
+
+.donation-complete__receipt {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: rgba(var(--color-navy-rgb), 0.5);
+}
+
+.donation-complete__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-block: 32px;
+  font-size: 0.875rem;
+  color: rgba(var(--color-navy-rgb), 0.6);
+}
+
+.donation-complete__actions {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.donation-complete__btn {
+  border-radius: 6px;
+  background: var(--color-gold);
+  padding: 14px 28px;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-navy);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.donation-complete__btn:hover {
+  background: var(--color-gold-dark);
+  transform: translateY(-2px);
+}
+
+.donation-complete__btn--ghost {
+  background: transparent;
+  border: 2px solid rgba(var(--color-navy-rgb), 0.15);
+  color: var(--color-navy);
+}
+
+.donation-complete__btn--ghost:hover {
+  background: rgba(var(--color-navy-rgb), 0.04);
+  border-color: rgba(var(--color-navy-rgb), 0.3);
+}

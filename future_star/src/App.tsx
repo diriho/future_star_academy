@@ -9,6 +9,8 @@ const About = lazy(() => import('./pages/About'))
 const GetInvolvedLanding = lazy(() => import('./pages/GetInvolved/GetInvolvedLanding'))
 const Volunteer = lazy(() => import('./pages/GetInvolved/Volunteer'))
 const Sponsor = lazy(() => import('./pages/GetInvolved/Sponsor'))
+const SponsorCheckout = lazy(() => import('./pages/GetInvolved/SponsorCheckout'))
+const DonationComplete = lazy(() => import('./pages/GetInvolved/DonationComplete'))
 const Partner = lazy(() => import('./pages/GetInvolved/Partner'))
 const Education = lazy(() => import('./pages/Programs/Education'))
 const Sports = lazy(() => import('./pages/Programs/Sports'))
@@ -36,6 +38,8 @@ function App() {
           <Route path="/get-involved" element={<GetInvolvedLanding />} />
           <Route path="/get-involved/volunteer" element={<Volunteer />} />
           <Route path="/get-involved/sponsor" element={<Sponsor />} />
+          <Route path="/get-involved/sponsor/checkout" element={<SponsorCheckout />} />
+          <Route path="/get-involved/sponsor/complete" element={<DonationComplete />} />
           <Route path="/get-involved/partner" element={<Partner />} />
           <Route path="/programs/education" element={<Education />} />
           <Route path="/programs/sports" element={<Sports />} />

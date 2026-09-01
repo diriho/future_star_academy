@@ -22,6 +22,9 @@ checkoutRouter.post('/create-checkout-session', async (req, res) => {
   try {
     const stripe = getStripe()
     const session = await stripe.checkout.sessions.create({
+      // 'elements' returns a client_secret instead of a hosted URL, so the
+      // Payment Element can render the payment form on our own checkout page.
+      ui_mode: 'elements',
       mode: isRecurring ? 'subscription' : 'payment',
       line_items: [
         {
@@ -36,15 +39,44 @@ checkoutRouter.post('/create-checkout-session', async (req, res) => {
           quantity: 1,
         },
       ],
-      success_url: `${clientUrl}/get-involved/sponsor?donation=success`,
-      cancel_url: `${clientUrl}/get-involved/sponsor?donation=cancelled`,
+      // Where Stripe sends the donor back after any payment method that has to
+      // leave our site to authenticate (3DS challenges, bank redirects, wallets).
+      return_url: `${clientUrl}/get-involved/sponsor/complete?session_id={CHECKOUT_SESSION_ID}`,
     })
 
     insertDonation({ stripeSession: session.id, amount: unitAmount, recurring: isRecurring })
 
-    res.json({ url: session.url })
+    res.json({ clientSecret: session.client_secret })
   } catch (err) {
     console.error('Failed to create Stripe checkout session:', err)
     res.status(500).json({ error: 'Unable to start checkout right now. Please try again shortly.' })
+  }
+})
+
+// Backs the post-payment return page. The donor's browser can be redirected here
+// by Stripe, so the status is always re-read from the API rather than trusted
+// from the query string.
+checkoutRouter.get('/session-status', async (req, res) => {
+  const sessionId = req.query.session_id
+
+  if (typeof sessionId !== 'string' || !sessionId.startsWith('cs_')) {
+    return res.status(400).json({ error: 'A valid session_id is required.' })
+  }
+
+  try {
+    const stripe = getStripe()
+    const session = await stripe.checkout.sessions.retrieve(sessionId)
+
+    res.json({
+      status: session.status,
+      paymentStatus: session.payment_status,
+      amountTotal: session.amount_total,
+      currency: session.currency,
+      customerEmail: session.customer_details?.email ?? null,
+      recurring: session.mode === 'subscription',
+    })
+  } catch (err) {
+    console.error('Failed to retrieve Stripe checkout session:', err)
+    res.status(500).json({ error: 'Unable to confirm your donation status right now.' })
   }
 })
