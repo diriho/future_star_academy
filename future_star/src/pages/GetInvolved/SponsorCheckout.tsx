@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import { ArrowLeft, Heart, Lock, RefreshCw } from 'lucide-react'
 import {
   CheckoutElementsProvider,
+  ContactDetailsElement,
   PaymentElement,
   useCheckoutElements,
 } from '@stripe/react-stripe-js/checkout'
@@ -36,6 +37,11 @@ function CheckoutForm({ amount, isRecurring }: { amount: number; isRecurring: bo
   const checkoutState = useCheckoutElements()
   const [submitting, setSubmitting] = useState(false)
 
+  // A Checkout Session cannot be confirmed without an email — Stripe throws
+  // IntegrationError otherwise — and it's also where the donor's receipt is sent.
+  const [email, setEmail] = useState('')
+  const [emailComplete, setEmailComplete] = useState(false)
+
   if (checkoutState.type === 'loading') {
     return (
       <div className="sponsor-checkout__loading">
@@ -60,10 +66,19 @@ function CheckoutForm({ amount, isRecurring }: { amount: number; isRecurring: bo
     if (submitting) return
     setSubmitting(true)
 
+    // Surfaces per-field messages inside the Stripe elements rather than as a
+    // single toast, so the donor is shown which field is wrong.
+    const validation = await checkout.validateElements()
+    if (validation.type === 'error') {
+      toast.error(validation.error.message)
+      setSubmitting(false)
+      return
+    }
+
     // Payment methods that need to leave the site (3DS, bank redirects, wallets)
     // are sent to the session's return_url by Stripe. Anything confirmed inline
     // resolves here, so both paths end on the same completion page.
-    const result = await checkout.confirm()
+    const result = await checkout.confirm({ email })
 
     if (result.type === 'error') {
       toast.error(result.error.message)
@@ -78,9 +93,22 @@ function CheckoutForm({ amount, isRecurring }: { amount: number; isRecurring: bo
 
   return (
     <form onSubmit={handleSubmit} className="sponsor-checkout__form">
+      <div className="sponsor-checkout__contact">
+        <ContactDetailsElement
+          onChange={(event) => {
+            setEmail(event.value.email)
+            setEmailComplete(event.complete)
+          }}
+        />
+      </div>
+
       <PaymentElement options={{ layout: 'tabs' }} />
 
-      <button type="submit" disabled={submitting} className="sponsor-checkout__submit">
+      <button
+        type="submit"
+        disabled={submitting || !emailComplete}
+        className="sponsor-checkout__submit"
+      >
         {submitting ? (
           <LoadingSpinner size="sm" />
         ) : isRecurring ? (
@@ -107,7 +135,7 @@ function CheckoutSession({ amount, isRecurring }: { amount: number; isRecurring:
   const [error, setError] = useState<string | null>(null)
 
   // StrictMode double-invokes effects in dev, and each run would create a real
-  // Stripe session (and a pending donations row), so creation is guarded.
+  // Stripe session, so creation is guarded.
   const requested = useRef(false)
 
   const stripePromise = getStripe()

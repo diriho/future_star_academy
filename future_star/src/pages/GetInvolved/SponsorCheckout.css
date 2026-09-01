@@ -70,6 +70,10 @@
   display: block;
 }
 
+.sponsor-checkout__contact {
+  margin-bottom: 20px;
+}
+
 .sponsor-checkout__submit {
   margin-top: 28px;
   display: flex;
