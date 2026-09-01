@@ -42,9 +42,9 @@ export function Footer() {
           <p className="footer__tagline">
             Building minds, developing talents, and transforming lives for a brighter future.
           </p>
-          <a href="mailto:info@fsaliberia.org" className="footer__email">
+          <a href="mailto:info@fsausaliberia.org" className="footer__email">
             <Mail size={16} aria-hidden="true" />
-            info@fsaliberia.org
+            info@fsausaliberia.org
           </a>
         </div>
 

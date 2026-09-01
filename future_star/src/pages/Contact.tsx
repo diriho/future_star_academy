@@ -57,7 +57,7 @@ export default function Contact() {
     }
 
     const body = `Name: ${name}\nEmail: ${email}\n\n${message}`
-    const mailtoUrl = `mailto:info@fsaliberia.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    const mailtoUrl = `mailto:info@fsausaliberia.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
     window.location.assign(mailtoUrl)
     toast.success("Opening your email client — we'll get back to you soon.")
@@ -99,7 +99,7 @@ export default function Contact() {
                 </span>
                 <div>
                   <p className="contact-info__label">Email</p>
-                  <p className="contact-info__value">info@fsaliberia.org</p>
+                  <p className="contact-info__value">info@fsausaliberia.org</p>
                 </div>
               </a>
 
