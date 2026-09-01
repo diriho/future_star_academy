@@ -4,13 +4,14 @@ import cors from 'cors'
 import { webhookRouter } from './routes/webhook.js'
 import { checkoutRouter } from './routes/checkout.js'
 import { newsEventsRouter } from './routes/newsEvents.js'
+import { getClientUrl } from './clientUrl.js'
 import './db.js'
 
 // start an express app
 const app = express()
 const PORT = process.env.PORT || 4000
 
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }))
+app.use(cors({ origin: getClientUrl() }))
 
 // Mounted before express.json() — the webhook route parses its own raw body internally.
 app.use('/api', webhookRouter)
@@ -22,6 +23,12 @@ app.use('/api', newsEventsRouter)
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }))
 
-app.listen(PORT, () => {
-  console.log(`Future Stars Academy API listening on http://localhost:${PORT}`)
-})
+// On Vercel the app is invoked as a serverless function (see api/index.mjs) and the
+// platform owns the socket, so only bind a port when running as a normal process.
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Future Stars Academy API listening on http://localhost:${PORT}`)
+  })
+}
+
+export default app

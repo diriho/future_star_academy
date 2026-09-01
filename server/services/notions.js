@@ -84,6 +84,38 @@ export function mapPageToNewsEvent(page) {
   }
 }
 
+// The Slug property is free text and routinely left blank, which used to leave an item
+// with no addressable URL at all. Derive one from the title instead so every published
+// item is reachable.
+export function slugify(value) {
+  return value
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
+// Fills in a slug for any item missing one. Explicit Slug values are claimed first so
+// that publishing a new item can never steal the URL of one that already had a slug
+// set. Collisions between derived slugs are broken with the Notion page id, which keeps
+// a given item's URL stable no matter what else gets published around it.
+export function resolveSlugs(items) {
+  const taken = new Set(items.map((item) => item.slug).filter(Boolean))
+
+  return items.map((item) => {
+    if (item.slug) return item
+
+    const shortId = item.id.replace(/-/g, '').slice(0, 8)
+    const base = slugify(item.title)
+    if (!base) return { ...item, slug: shortId }
+
+    const slug = taken.has(base) ? `${base}-${shortId}` : base
+    taken.add(slug)
+    return { ...item, slug }
+  })
+}
+
 export async function getPublishedNewsEvents() {
   const notion = getClient()
   const data_source_id = await getDataSourceId()
@@ -100,7 +132,7 @@ export async function getPublishedNewsEvents() {
     sorts: [{ property: 'Published Date', direction: 'descending' }],
   })
 
-  return results.map(mapPageToNewsEvent)
+  return resolveSlugs(results.map(mapPageToNewsEvent))
 }
 
 export async function getPublishedNewsEventBySlug(slug) {

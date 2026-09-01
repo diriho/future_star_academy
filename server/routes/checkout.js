@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { getStripe } from '../stripeClient.js'
 import { insertDonation } from '../db.js'
+import { getClientUrl } from '../clientUrl.js'
 
 export const checkoutRouter = Router()
 
@@ -16,7 +17,7 @@ checkoutRouter.post('/create-checkout-session', async (req, res) => {
   }
 
   const isRecurring = Boolean(recurring)
-  const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173'
+  const clientUrl = getClientUrl()
   const unitAmount = Math.round(parsedAmount * 100)
 
   try {

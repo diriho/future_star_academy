@@ -15,6 +15,13 @@ calls; every Notion property type (title, rich_text, select, multi_select, date,
 checkbox, url, place) is tested against both a populated value and its missing/empty
 edge case, using hand-built fixture pages.
 
+### slug.test.js
+Pure unit tests for `slugify` and `resolveSlugs` in `services/notions.js` — the pass
+that gives every published item a URL even when the Notion `Slug` property is left
+blank. Covers accent stripping, punctuation collapsing, precedence of an explicit Slug
+over a derived one, page-id disambiguation when two titles collide, and that the input
+items are not mutated. No network calls.
+
 ### config.test.js
 Confirms `getPublishedNewsEvents()` rejects with a clear, actionable error when
 `NOTION_API_KEY` or `NOTION_DATABASE_ID` isn't set, instead of failing with a raw

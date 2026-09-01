@@ -93,7 +93,7 @@ export default function Contact() {
 
             <div className="contact-info__list">
                {/*Email info*/}
-              <a href="mailto:info@fsaliberia.org" className="contact-info__item">
+              <a href="mailto:info@fsausaliberia.org" className="contact-info__item">
                 <span className="contact-info__icon">
                   <Mail size={20} aria-hidden="true" />
                 </span>
@@ -110,7 +110,7 @@ export default function Contact() {
                 </span>
                 <div>
                   <p className="contact-info__label">Website</p>
-                  <p className="contact-info__value">www.fsaliberia.org</p>
+                  <p className="contact-info__value">www.fsausaliberia.org</p>
                 </div>
               </div>
 
@@ -146,7 +146,7 @@ export default function Contact() {
                 </span>
                 <div>
                   <p className="contact-info__label">Phone</p>
-                  <p className="contact-info__value">+1 (xxx) xxx-xxxx</p>
+                  <p className="contact-info__value">+1 (401) 585-9603</p>
                 </div> 
               </div>
             </div>
