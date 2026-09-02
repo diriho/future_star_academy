@@ -37,9 +37,10 @@ function CheckoutForm({ amount, isRecurring }: { amount: number; isRecurring: bo
   const checkoutState = useCheckoutElements()
   const [submitting, setSubmitting] = useState(false)
 
-  // A Checkout Session cannot be confirmed without an email — Stripe throws
-  // IntegrationError otherwise — and it's also where the donor's receipt is sent.
-  const [email, setEmail] = useState('')
+  // A Checkout Session cannot be confirmed without an email, and it's where the
+  // donor's receipt is sent. The mounted ContactDetailsElement owns that field and
+  // syncs it into the session itself, so this only tracks validity for the button —
+  // passing the address to confirm() as well is rejected as a double source of truth.
   const [emailComplete, setEmailComplete] = useState(false)
 
   if (checkoutState.type === 'loading') {
@@ -78,7 +79,7 @@ function CheckoutForm({ amount, isRecurring }: { amount: number; isRecurring: bo
     // Payment methods that need to leave the site (3DS, bank redirects, wallets)
     // are sent to the session's return_url by Stripe. Anything confirmed inline
     // resolves here, so both paths end on the same completion page.
-    const result = await checkout.confirm({ email })
+    const result = await checkout.confirm()
 
     if (result.type === 'error') {
       toast.error(result.error.message)
@@ -94,12 +95,7 @@ function CheckoutForm({ amount, isRecurring }: { amount: number; isRecurring: bo
   return (
     <form onSubmit={handleSubmit} className="sponsor-checkout__form">
       <div className="sponsor-checkout__contact">
-        <ContactDetailsElement
-          onChange={(event) => {
-            setEmail(event.value.email)
-            setEmailComplete(event.complete)
-          }}
-        />
+        <ContactDetailsElement onChange={(event) => setEmailComplete(event.complete)} />
       </div>
 
       <PaymentElement options={{ layout: 'tabs' }} />
