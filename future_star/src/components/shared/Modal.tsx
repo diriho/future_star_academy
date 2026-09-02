@@ -9,12 +9,16 @@ interface ModalProps {
   onClose: () => void
   title: string
   children: ReactNode
+  // Set while something is stacked above the dialog (an image lightbox, say) so it
+  // owns Escape and Tab instead. The scroll lock and focus restore stay in place,
+  // because the dialog itself hasn't closed.
+  suspended?: boolean
 }
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])'
 
-export function Modal({ isOpen, onClose, title, children }: ModalProps) {
+export function Modal({ isOpen, onClose, title, children, suspended = false }: ModalProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<Element | null>(null)
@@ -25,6 +29,15 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
     triggerRef.current = document.activeElement
     document.body.style.overflow = 'hidden'
     closeButtonRef.current?.focus()
+
+    return () => {
+      document.body.style.overflow = ''
+      if (triggerRef.current instanceof HTMLElement) triggerRef.current.focus()
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    if (!isOpen || suspended) return
 
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') {
@@ -48,12 +61,8 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
     }
 
     document.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.body.style.overflow = ''
-      document.removeEventListener('keydown', handleKeyDown)
-      if (triggerRef.current instanceof HTMLElement) triggerRef.current.focus()
-    }
-  }, [isOpen, onClose])
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen, suspended, onClose])
 
   return createPortal(
     <AnimatePresence>
@@ -64,7 +73,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
           exit={{ opacity: 0 }}
           className="modal__overlay"
           onMouseDown={(e) => {
-            if (e.target === e.currentTarget) onClose()
+            if (!suspended && e.target === e.currentTarget) onClose()
           }}
         >
           <motion.div

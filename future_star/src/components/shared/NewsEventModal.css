@@ -1,0 +1,115 @@
+.story {
+  display: flex;
+  flex-direction: column;
+}
+
+.story__hero {
+  position: relative;
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+  background: rgba(var(--color-navy-rgb), 0.05);
+}
+
+.story__hero-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  /* Keeps the banner from filling a short viewport before any of the text. The
+     whole, uncropped picture is a click away in the lightbox. */
+  max-height: 42vh;
+}
+
+.story__hero-zoom {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  height: 34px;
+  width: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(var(--color-navy-rgb), 0.75);
+  color: var(--color-white);
+  backdrop-filter: blur(2px);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.story__hero:hover .story__hero-zoom {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+
+.story__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+.story__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(var(--color-navy-rgb), 0.55);
+}
+
+.story__tag {
+  border-radius: 999px;
+  background: rgba(var(--color-gold-rgb), 0.18);
+  padding: 4px 12px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-navy);
+}
+
+.story__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* The Notion Description property — the standfirst above the page body. */
+.story__lede {
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 500;
+  color: rgba(var(--color-navy-rgb), 0.85);
+}
+
+.story__status {
+  display: flex;
+  justify-content: center;
+  padding-block: 12px;
+}
+
+.story__error,
+.story__empty {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(var(--color-navy-rgb), 0.6);
+}
+
+.story__register {
+  margin-top: 4px;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  background: var(--color-navy);
+  padding: 10px 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-white);
+  transition: background-color 0.2s ease;
+}
+
+.story__register:hover {
+  background: var(--color-navy-light);
+}

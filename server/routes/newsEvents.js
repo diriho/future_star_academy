@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { getPublishedNewsEvents, getPublishedNewsEventBySlug } from '../services/notions.js'
+import { getPublishedNewsEvents, getPublishedNewsEventDetail } from '../services/notions.js'
 
 export const newsEventsRouter = Router()
 
@@ -15,7 +15,7 @@ newsEventsRouter.get('/news-events', async (_req, res) => {
 
 newsEventsRouter.get('/news-events/:slug', async (req, res) => {
   try {
-    const item = await getPublishedNewsEventBySlug(req.params.slug)
+    const item = await getPublishedNewsEventDetail(req.params.slug)
     if (!item) {
       return res.status(404).json({ error: 'News or event not found.' })
     }

@@ -1,0 +1,102 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  /* Above .modal__overlay (z-index 50), which stays mounted underneath. */
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 56px 16px;
+  background: rgba(var(--color-navy-rgb), 0.94);
+}
+
+.lightbox__figure {
+  display: flex;
+  max-height: 100%;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.lightbox__image {
+  min-height: 0;
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.lightbox__caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 14px;
+  max-width: 40rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.lightbox__counter {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.lightbox__close,
+.lightbox__nav {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lightbox__close:hover,
+.lightbox__nav:hover {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+
+.lightbox__close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  height: 40px;
+  width: 40px;
+}
+
+.lightbox__nav {
+  height: 44px;
+  width: 44px;
+}
+
+@media (max-width: 639px) {
+  .lightbox {
+    padding: 56px 8px 72px;
+  }
+
+  /* Too little room to flank the picture on a phone, so dock the arrows instead. */
+  .lightbox__nav {
+    position: absolute;
+    bottom: 16px;
+  }
+
+  .lightbox__nav--prev {
+    left: 25%;
+  }
+
+  .lightbox__nav--next {
+    right: 25%;
+  }
+}

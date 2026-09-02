@@ -22,6 +22,15 @@ blank. Covers accent stripping, punctuation collapsing, precedence of an explici
 over a derived one, page-id disambiguation when two titles collide, and that the input
 items are not mutated. No network calls.
 
+### content.test.js
+Pure unit tests for `mapBlock` and `collectImages` in `services/notions.js` — the pass
+that turns the Notion page body behind each item into the content nodes the article
+dialog renders. Covers every supported block type (paragraphs, headings, lists,
+quotes, callouts, toggles, images, dividers), rich-text annotations and links, both
+Notion-hosted and external image URLs, that unsupported types and empty paragraphs are
+dropped, and that the flat image list leads with the featured image and de-duplicates.
+No network calls.
+
 ### config.test.js
 Confirms `getPublishedNewsEvents()` rejects with a clear, actionable error when
 `NOTION_API_KEY` or `NOTION_DATABASE_ID` isn't set, instead of failing with a raw

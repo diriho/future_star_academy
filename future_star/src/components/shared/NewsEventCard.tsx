@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { CalendarDays, ExternalLink, MapPin, Newspaper, PartyPopper } from 'lucide-react'
+import { ArrowRight, CalendarDays, ExternalLink, MapPin, Newspaper, PartyPopper } from 'lucide-react'
 import type { NewsEvent } from '../../lib/api'
 import { formatDate } from '../../lib/utils'
 import { LazyImage } from './LazyImage'
@@ -8,9 +8,11 @@ import './NewsEventCard.css'
 interface NewsEventCardProps {
   item: NewsEvent
   index?: number
+  // When given, the whole card becomes the trigger for the item's detail dialog.
+  onSelect?: (item: NewsEvent) => void
 }
 
-export function NewsEventCard({ item, index = 0 }: NewsEventCardProps) {
+export function NewsEventCard({ item, index = 0, onSelect }: NewsEventCardProps) {
   const isEvent = item.type === 'Event'
   const tag = item.category[0] ?? item.type ?? 'Update'
 
@@ -35,7 +37,17 @@ export function NewsEventCard({ item, index = 0 }: NewsEventCardProps) {
       </div>
 
       <div className="news-event-card__body">
-        <h3 className="news-event-card__title">{item.title}</h3>
+        <h3 className="news-event-card__title">
+          {onSelect ? (
+            // The button's ::after covers the card, so the whole thing is clickable
+            // from a single tab stop whose accessible name is the title itself.
+            <button type="button" onClick={() => onSelect(item)} className="news-event-card__trigger">
+              {item.title}
+            </button>
+          ) : (
+            item.title
+          )}
+        </h3>
 
         <div className="news-event-card__meta">
           {isEvent ? (
@@ -60,6 +72,13 @@ export function NewsEventCard({ item, index = 0 }: NewsEventCardProps) {
         </div>
 
         {item.summary && <p className="news-event-card__summary">{item.summary}</p>}
+
+        {onSelect && (
+          <span className="news-event-card__more" aria-hidden="true">
+            Read more
+            <ArrowRight size={14} />
+          </span>
+        )}
 
         {isEvent && item.registrationUrl && (
           <a

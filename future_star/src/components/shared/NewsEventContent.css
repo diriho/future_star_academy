@@ -1,0 +1,125 @@
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: rgba(var(--color-navy-rgb), 0.78);
+}
+
+.article__heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-navy);
+  margin-top: 8px;
+}
+
+.article__heading--2 {
+  font-size: 1.125rem;
+}
+
+.article__heading--3 {
+  font-size: 1rem;
+}
+
+.article__heading--4 {
+  font-size: 0.9375rem;
+}
+
+.article__paragraph {
+  margin: 0;
+}
+
+.article__list {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: disc;
+}
+
+.article__list--ordered {
+  list-style: decimal;
+}
+
+.article__quote {
+  margin: 0;
+  border-left: 3px solid var(--color-gold);
+  padding: 2px 0 2px 16px;
+  font-style: italic;
+  color: rgba(var(--color-navy-rgb), 0.7);
+}
+
+.article__callout {
+  border-radius: 10px;
+  background: rgba(var(--color-gold-rgb), 0.12);
+  padding: 14px 16px;
+  color: var(--color-navy);
+}
+
+.article__link {
+  font-weight: 600;
+  color: var(--color-navy);
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+.article__link:hover {
+  color: var(--color-navy-light);
+}
+
+.article__code {
+  border-radius: 4px;
+  background: rgba(var(--color-navy-rgb), 0.06);
+  padding: 1px 5px;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.article__divider {
+  border: 0;
+  border-top: 1px solid rgba(var(--color-navy-rgb), 0.1);
+  margin: 4px 0;
+}
+
+.article__figure {
+  margin: 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.article__image-button {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: zoom-in;
+  transition: box-shadow 0.25s ease;
+}
+
+.article__image-button:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.article__image {
+  width: 100%;
+}
+
+/* Body pictures keep their own proportions: LazyImage crops to fill by default,
+   which would throw most of a portrait photo away. Specificity beats the base
+   rule, so this holds whatever order the two stylesheets land in. */
+.article__image .lazy-image__img {
+  height: auto;
+  object-fit: contain;
+}
+
+.article__figcaption {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgba(var(--color-navy-rgb), 0.55);
+}

@@ -74,7 +74,35 @@ export async function fetchNewsEvents(): Promise<NewsEvent[]> {
   return res.json()
 }
 
-export async function fetchNewsEventBySlug(slug: string): Promise<NewsEvent> {
+// One styled run of text inside a Notion page body.
+export interface RichTextRun {
+  text: string
+  bold: boolean
+  italic: boolean
+  code: boolean
+  href: string | null
+}
+
+export type ContentBlock =
+  | { type: 'paragraph' | 'quote' | 'callout' | 'bulleted-list-item' | 'numbered-list-item'; richText: RichTextRun[] }
+  | { type: 'heading'; level: number; richText: RichTextRun[] }
+  | { type: 'image'; url: string; caption: string }
+  | { type: 'divider' }
+
+export interface ContentImage {
+  url: string
+  caption: string
+}
+
+// A single item plus the body written inside its Notion page. `images` is every
+// picture on the page in reading order — the featured image first — which is what
+// the lightbox pages through.
+export interface NewsEventDetail extends NewsEvent {
+  content: ContentBlock[]
+  images: ContentImage[]
+}
+
+export async function fetchNewsEventBySlug(slug: string): Promise<NewsEventDetail> {
   const res = await fetch(`/api/news-events/${encodeURIComponent(slug)}`)
 
   if (!res.ok) {

@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { useSearchParams } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { HeroSection } from '../components/shared/HeroSection'
 import { SectionTitle } from '../components/shared/SectionTitle'
 import { CTASection } from '../components/shared/CTASection'
 import { LoadingSpinner } from '../components/shared/LoadingSpinner'
 import { NewsEventCard } from '../components/shared/NewsEventCard'
+import { NewsEventModal } from '../components/shared/NewsEventModal'
 import { fetchNewsEvents, type NewsEvent } from '../lib/api'
 import teamHuddle from '../assets/team-huddle.jpg'
 import './NewsEvents.css'
@@ -14,9 +16,40 @@ export default function NewsEvents() {
   const [items, setItems] = useState<NewsEvent[]>([])
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
 
+  // The open story lives in the URL, so a story can be linked to directly and the
+  // browser's Back button closes the dialog instead of leaving the page.
+  const [searchParams, setSearchParams] = useSearchParams()
+  const activeSlug = searchParams.get('story')
+
+  const openStory = useCallback(
+    (item: NewsEvent) => {
+      setSearchParams(
+        (previous) => {
+          const next = new URLSearchParams(previous)
+          next.set('story', item.slug)
+          return next
+        },
+        { preventScrollReset: true },
+      )
+    },
+    [setSearchParams],
+  )
+
+  // Replaces rather than pushes, so closing doesn't leave an entry that Back would
+  // reopen the dialog from.
+  const closeStory = useCallback(() => {
+    setSearchParams(
+      (previous) => {
+        const next = new URLSearchParams(previous)
+        next.delete('story')
+        return next
+      },
+      { replace: true, preventScrollReset: true },
+    )
+  }, [setSearchParams])
+
   useEffect(() => {
     let cancelled = false
-    setStatus('loading')
     fetchNewsEvents()
       .then((data) => {
         if (cancelled) return
@@ -33,6 +66,7 @@ export default function NewsEvents() {
 
   const news = items.filter((item) => item.type === 'News')
   const events = items.filter((item) => item.type === 'Event')
+  const activeItem = items.find((item) => item.slug === activeSlug) ?? null
 
   return (
     <>
@@ -74,7 +108,7 @@ export default function NewsEvents() {
               {news.length > 0 ? (
                 <div className="news-events-grid">
                   {news.map((item, i) => (
-                    <NewsEventCard key={item.id} item={item} index={i} />
+                    <NewsEventCard key={item.id} item={item} index={i} onSelect={openStory} />
                   ))}
                 </div>
               ) : (
@@ -89,7 +123,7 @@ export default function NewsEvents() {
               {events.length > 0 ? (
                 <div className="news-events-grid">
                   {events.map((item, i) => (
-                    <NewsEventCard key={item.id} item={item} index={i} />
+                    <NewsEventCard key={item.id} item={item} index={i} onSelect={openStory} />
                   ))}
                 </div>
               ) : (
@@ -99,6 +133,8 @@ export default function NewsEvents() {
           </section>
         </>
       )}
+
+      <NewsEventModal slug={activeSlug} preview={activeItem} onClose={closeStory} />
 
       <CTASection
         title="Want to Be Part of the Story?"

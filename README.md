@@ -25,6 +25,24 @@ The frontend proxies `/api/*` to the backend in dev, so no CORS config is needed
 - `future_star/` — the site (Home, Get Involved / Volunteer / Sponsor / Partner, Programs).
 - `server/` — `POST /api/create-checkout-session` (one-time or monthly), `GET /api/session-status`
   (re-reads a donation's outcome straight from Stripe), and `GET /api/news-events[/:slug]` (Notion).
+  The `/:slug` form also returns the item's page body as content blocks, plus a flat list of every
+  picture on the page.
+
+## Writing news & events
+
+Each row in the Notion database is one card on `/news-events`. The database properties fill in the
+card itself: `Title`, `Type` (News or Event), `Description` (the summary), `Image`, `Category`,
+dates, `Location`, `Registration URL`. A row only appears once `Status` is `Published` and its
+`Published Date` has arrived.
+
+Clicking a card opens the full story in a dialog, and that dialog renders **whatever you write
+inside the Notion page itself** — headings, paragraphs, bullet and numbered lists, quotes, callouts,
+dividers, and images (with their captions). Pictures are clickable: they open a full-screen viewer
+that pages through every image on the page, the `Image` property first. Anything else Notion
+supports (tables, embeds, videos, code) is skipped rather than half-rendered.
+
+So a row with only properties filled in still works — it just shows the summary and one picture.
+To give a story real depth, write the body inside its Notion page and drop photos in as you go.
 
 ## Deploying
 

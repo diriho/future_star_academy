@@ -1,4 +1,5 @@
 .news-event-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -62,6 +63,24 @@
   color: var(--color-navy);
 }
 
+/* Stretches over the whole card so anywhere on it opens the story, while the
+   accessible name and the single tab stop stay on the title text. */
+.news-event-card__trigger {
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.news-event-card__trigger::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.news-event-card:hover .news-event-card__trigger,
+.news-event-card__trigger:focus-visible {
+  color: var(--color-navy-light);
+}
+
 .news-event-card__meta {
   margin-top: 8px;
   display: flex;
@@ -90,7 +109,26 @@
   overflow: hidden;
 }
 
+.news-event-card__more {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  transition: gap 0.2s ease;
+}
+
+.news-event-card:hover .news-event-card__more {
+  gap: 10px;
+}
+
+/* Above the title button's overlay, so Register still opens its own link. */
 .news-event-card__register {
+  position: relative;
+  z-index: 1;
   margin-top: 16px;
   display: inline-flex;
   align-items: center;

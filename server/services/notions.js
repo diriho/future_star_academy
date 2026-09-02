@@ -139,3 +139,130 @@ export async function getPublishedNewsEventBySlug(slug) {
   const items = await getPublishedNewsEvents()
   return items.find((item) => item.slug === slug) ?? null
 }
+
+function richTextToPlain(runs) {
+  return (runs ?? []).map((run) => run.plain_text ?? '').join('')
+}
+
+// Keeps the annotations the article view actually renders and drops the rest
+// (colours, underline, mentions) — those would only ever be styled away again.
+function mapRichText(runs) {
+  return (runs ?? [])
+    .filter((run) => run.plain_text)
+    .map((run) => ({
+      text: run.plain_text,
+      bold: Boolean(run.annotations?.bold),
+      italic: Boolean(run.annotations?.italic),
+      code: Boolean(run.annotations?.code),
+      href: run.href ?? null,
+    }))
+}
+
+// A Notion file value is either hosted by Notion (a signed, expiring URL) or an
+// external link. Callers get whichever applies; see getPageContent on expiry.
+function getFileUrl(file) {
+  if (file?.type === 'external') return file.external?.url ?? null
+  return file?.file?.url ?? null
+}
+
+// Block types that carry rich text, mapped to the node type the client renders.
+// A toggle's own text becomes a paragraph and its children are flattened after it,
+// since the article view has no disclosure UI.
+const TEXT_BLOCKS = {
+  paragraph: 'paragraph',
+  quote: 'quote',
+  callout: 'callout',
+  toggle: 'paragraph',
+  bulleted_list_item: 'bulleted-list-item',
+  numbered_list_item: 'numbered-list-item',
+}
+
+// heading_1 maps to level 2: the page's <h1> is the item title, not a body heading.
+const HEADING_LEVELS = { heading_1: 2, heading_2: 3, heading_3: 4 }
+
+// Turns one Notion block into a content node, or null when the block holds nothing
+// worth rendering — an empty paragraph (Notion pages are full of them), or a type
+// the article view doesn't support. Dropping those beats half-rendering them.
+export function mapBlock(block) {
+  const type = block?.type
+  if (!type) return null
+
+  if (TEXT_BLOCKS[type]) {
+    const richText = mapRichText(block[type]?.rich_text)
+    return richText.length > 0 ? { type: TEXT_BLOCKS[type], richText } : null
+  }
+
+  if (HEADING_LEVELS[type]) {
+    const richText = mapRichText(block[type]?.rich_text)
+    return richText.length > 0 ? { type: 'heading', level: HEADING_LEVELS[type], richText } : null
+  }
+
+  if (type === 'image') {
+    const url = getFileUrl(block.image)
+    return url ? { type: 'image', url, caption: richTextToPlain(block.image?.caption) } : null
+  }
+
+  if (type === 'divider') return { type: 'divider' }
+
+  return null
+}
+
+// Notion page bodies are trees; the article view renders a flat list. Nested blocks
+// are appended after their parent, which reads correctly for the shapes editors
+// actually use (lists inside lists, content inside columns or toggles).
+const MAX_BLOCK_DEPTH = 3
+const MAX_BLOCKS = 300
+
+async function collectBlocks(notion, blockId, depth, out) {
+  const blocks = await collectPaginatedAPI(notion.blocks.children.list, { block_id: blockId })
+
+  for (const block of blocks) {
+    if (out.length >= MAX_BLOCKS) break
+
+    const node = mapBlock(block)
+    if (node) out.push(node)
+
+    if (block.has_children && depth + 1 <= MAX_BLOCK_DEPTH) {
+      await collectBlocks(notion, block.id, depth + 1, out)
+    }
+  }
+
+  return out
+}
+
+// The body an editor writes inside the Notion page, which is where the long-form
+// detail and in-article pictures live (the database properties only hold a summary
+// and one image). Notion-hosted image URLs are signed and expire about an hour after
+// they're issued, so this is fetched per request rather than cached.
+export async function getPageContent(pageId) {
+  return collectBlocks(getClient(), pageId, 0, [])
+}
+
+// Every picture on the page in reading order, so the client's lightbox can page
+// through them as one set. The featured image leads and is de-duplicated in case the
+// editor also placed it in the body.
+export function collectImages(item, content) {
+  const images = []
+  const seen = new Set()
+
+  const add = (url, caption) => {
+    if (!url || seen.has(url)) return
+    seen.add(url)
+    images.push({ url, caption })
+  }
+
+  add(item.featuredImage, item.title)
+  for (const node of content) {
+    if (node.type === 'image') add(node.url, node.caption)
+  }
+
+  return images
+}
+
+export async function getPublishedNewsEventDetail(slug) {
+  const item = await getPublishedNewsEventBySlug(slug)
+  if (!item) return null
+
+  const content = await getPageContent(item.id)
+  return { ...item, content, images: collectImages(item, content) }
+}
