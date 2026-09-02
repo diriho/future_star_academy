@@ -247,10 +247,10 @@ export default function Home() {
           
           <StatsSection
             stats={[
-              { value: 500, suffix: '+', label: 'Youth Impacted' },
-              { value: 20, suffix: '+', label: 'Education Programs' },
-              { value: 15, suffix: '+', label: 'Soccer Teams' },
-              { value: 100, suffix: '+', label: 'Volunteers & Partners' },
+              { value: 30, suffix: '+', label: 'Youth Impacted' },
+              { value: 4, suffix: '+', label: 'Education Programs' },
+              { value: 4, suffix: '+', label: 'Soccer Teams' },
+              { value: 6, suffix: '+', label: 'Volunteers & Partners' },
             ]}
           />
         </div>

@@ -60,10 +60,10 @@ export default function Volunteer() {
           <SectionTitle eyebrow="Our Impact" title="Volunteers Like You Make This Possible" light align="center" className="mb-12" />
           <StatsSection
             stats={[
-              { value: 500, suffix: '+', label: 'Youth Served' },
-              { value: 100, suffix: '+', label: 'Volunteers' },
-              { value: 20, suffix: '+', label: 'Education Programs' },
-              { value: 15, suffix: '+', label: 'Soccer Teams' },
+              { value: 30, suffix: '+', label: 'Youth Served' },
+              { value: 6, suffix: '+', label: 'Volunteers' },
+              { value: 4, suffix: '+', label: 'Education Programs' },
+              { value: 4, suffix: '+', label: 'Soccer Teams' },
             ]}
           />
         </div>
