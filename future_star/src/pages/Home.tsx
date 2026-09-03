@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import {
@@ -21,7 +22,11 @@ import { SectionTitle } from '../components/shared/SectionTitle'
 import { FeatureCard } from '../components/shared/FeatureCard'
 import { StatsSection } from '../components/shared/StatsSection'
 import { GallerySection } from '../components/shared/GallerySection'
-import { LazyImage } from '../components/shared/LazyImage'
+import { LatestNewsCard } from '../components/shared/LatestNewsCard'
+import { LoadingSpinner } from '../components/shared/LoadingSpinner'
+import { NewsEventModal } from '../components/shared/NewsEventModal'
+import { fetchNewsEvents, type NewsEvent } from '../lib/api'
+import { useStoryDialog } from '../lib/useStoryDialog'
 import './Home.css'
 
 import soccerTrio from '../assets/soccer-trio.jpg'
@@ -67,27 +72,6 @@ const getInvolvedStrip = [
   { icon: Heart, title: 'Donate', subtitle: 'Support Our Cause', to: '/get-involved/sponsor' },
 ]
 
-const newsItems = [
-  {
-    image: classroom1,
-    tag: 'Education',
-    title: 'Back to School Program Empowers Students',
-    date: 'May 10, 2025',
-  },
-  {
-    image: teamHuddle,
-    tag: 'Events',
-    title: 'Future Stars Soccer Camp A Big Success!',
-    date: 'April 25, 2025',
-  },
-  {
-    image: classroom2,
-    tag: 'Community',
-    title: 'Community Outreach Makes an Impact',
-    date: 'April 10, 2025',
-  },
-]
-
 const getInvolvedSidebar = [
   { icon: HandHeart, label: 'Volunteer', to: '/get-involved/volunteer' },
   { icon: Gift, label: 'Sponsor a Program', to: '/get-involved/sponsor' },
@@ -102,7 +86,34 @@ const galleryImages = [
   { src: classroom2, caption: 'STEM & Tutoring' },
 ]
 
+const LATEST_COUNT = 3
+
 export default function Home() {
+  const [items, setItems] = useState<NewsEvent[]>([])
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
+
+  useEffect(() => {
+    let cancelled = false
+    fetchNewsEvents()
+      .then((data) => {
+        if (cancelled) return
+        setItems(data)
+        setStatus('ready')
+      })
+      .catch(() => {
+        if (!cancelled) setStatus('error')
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const { activeSlug, activeItem, openStory, closeStory } = useStoryDialog(items)
+
+  // The API returns published items newest-first, so the top of the list is the
+  // latest few posts whether they happen to be news or events.
+  const latest = items.slice(0, LATEST_COUNT)
+
   return (
     <>
       <Helmet>
@@ -262,28 +273,31 @@ export default function Home() {
           <div className="news-section__grid">
             <div>
               <SectionTitle eyebrow="News & Events" title="Latest From Future Stars Academy" className="mb-10" />
-              <div className="news-section__items">
-                {newsItems.map((item, i) => (
-                  <motion.article
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-40px' }}
-                    transition={{ duration: 0.4, delay: i * 0.08 }}
-                    whileHover={{ y: -6 }}
-                    className="news-card"
-                  >
-                    <div className="news-card__image">
-                      <LazyImage src={item.image} alt={item.title} className="news-card__lazy-image" />
-                      <span className="news-card__tag">{item.tag}</span>
-                    </div>
-                    <div className="news-card__body">
-                      <h3 className="news-card__title">{item.title}</h3>
-                      <p className="news-card__date">{item.date}</p>
-                    </div>
-                  </motion.article>
-                ))}
-              </div>
+              {status === 'loading' && (
+                <div className="news-section__status">
+                  <LoadingSpinner size="sm" />
+                </div>
+              )}
+
+              {status === 'error' && (
+                <p className="news-section__status-text">
+                  We couldn't load the latest updates right now.
+                </p>
+              )}
+
+              {status === 'ready' && latest.length === 0 && (
+                <p className="news-section__status-text">
+                  Our first stories are on the way — check back soon.
+                </p>
+              )}
+
+              {latest.length > 0 && (
+                <div className="news-section__items">
+                  {latest.map((item, i) => (
+                    <LatestNewsCard key={item.id} item={item} index={i} onSelect={openStory} />
+                  ))}
+                </div>
+              )}
             </div>
 
             <motion.div
@@ -314,6 +328,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <NewsEventModal slug={activeSlug} preview={activeItem} onClose={closeStory} />
 
       {/* Gallery */}
       <section id="gallery" className="home-gallery">

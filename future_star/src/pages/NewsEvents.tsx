@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { useSearchParams } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { HeroSection } from '../components/shared/HeroSection'
 import { SectionTitle } from '../components/shared/SectionTitle'
@@ -9,6 +8,7 @@ import { LoadingSpinner } from '../components/shared/LoadingSpinner'
 import { NewsEventCard } from '../components/shared/NewsEventCard'
 import { NewsEventModal } from '../components/shared/NewsEventModal'
 import { fetchNewsEvents, type NewsEvent } from '../lib/api'
+import { useStoryDialog } from '../lib/useStoryDialog'
 import teamHuddle from '../assets/team-huddle.jpg'
 import './NewsEvents.css'
 
@@ -16,37 +16,7 @@ export default function NewsEvents() {
   const [items, setItems] = useState<NewsEvent[]>([])
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
 
-  // The open story lives in the URL, so a story can be linked to directly and the
-  // browser's Back button closes the dialog instead of leaving the page.
-  const [searchParams, setSearchParams] = useSearchParams()
-  const activeSlug = searchParams.get('story')
-
-  const openStory = useCallback(
-    (item: NewsEvent) => {
-      setSearchParams(
-        (previous) => {
-          const next = new URLSearchParams(previous)
-          next.set('story', item.slug)
-          return next
-        },
-        { preventScrollReset: true },
-      )
-    },
-    [setSearchParams],
-  )
-
-  // Replaces rather than pushes, so closing doesn't leave an entry that Back would
-  // reopen the dialog from.
-  const closeStory = useCallback(() => {
-    setSearchParams(
-      (previous) => {
-        const next = new URLSearchParams(previous)
-        next.delete('story')
-        return next
-      },
-      { replace: true, preventScrollReset: true },
-    )
-  }, [setSearchParams])
+  const { activeSlug, activeItem, openStory, closeStory } = useStoryDialog(items)
 
   useEffect(() => {
     let cancelled = false
@@ -66,7 +36,6 @@ export default function NewsEvents() {
 
   const news = items.filter((item) => item.type === 'News')
   const events = items.filter((item) => item.type === 'Event')
-  const activeItem = items.find((item) => item.slug === activeSlug) ?? null
 
   return (
     <>
