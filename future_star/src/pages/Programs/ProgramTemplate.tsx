@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle2, Quote } from 'lucide-react'
+import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import { HeroSection } from '../../components/shared/HeroSection'
 import { SectionTitle } from '../../components/shared/SectionTitle'
 import { FeatureCard } from '../../components/shared/FeatureCard'
@@ -96,7 +96,8 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
       </section>
 
       {/* Success Stories */}
-      <section className="section section--offwhite">
+      {/**
+       <section className="section section--offwhite">
         <div className="container">
           <SectionTitle eyebrow="Success Stories" title="Real Impact, Real Growth" align="center" className="mb-14" />
           <div className="program-stories-grid">
@@ -117,6 +118,8 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
           </div>
         </div>
       </section>
+      * 
+       */}
 
       {/* FAQ */}
       <section className="section section--white">
