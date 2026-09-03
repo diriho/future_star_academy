@@ -4,11 +4,12 @@ import { SectionTitle } from '../components/shared/SectionTitle'
 import { FeatureCard } from '../components/shared/FeatureCard'
 import { StatsSection } from '../components/shared/StatsSection'
 import { TeamCard } from '../components/shared/TeamCard'
-import { FacebookIcon, InstagramIcon, YoutubeIcon, LinkedInIcon } from '../components/shared/SocialIcons'
+import { FacebookIcon, GithubIcon, InstagramIcon, YoutubeIcon, LinkedInIcon } from '../components/shared/SocialIcons'
 import teamHuddle from '../assets/team-huddle.jpg'
 import './About.css'
 import charlesGongar from '../assets/team/charles_gongar.jpeg'
 import alexanderZean from '../assets/team/alexander_zean.jpeg'
+import webDeveloper from '../assets/team/iriho_don.jpg'
 
 const missionCards = [
   {
@@ -151,6 +152,18 @@ const About = () => {
                   { label: 'LinkedIn', href: 'https://linkedin.com/in/charles-t-gongar-jr-6157b1325/', Icon: LinkedInIcon },
                   { label: 'Facebook', href: 'https://facebook.com/janesmith', Icon: FacebookIcon },
                   { label: 'Instagram', href: 'https://instagram.com/janesmith', Icon: InstagramIcon },
+                ]}
+              />
+
+              {/** Web Developer card */}
+              <TeamCard
+                image={webDeveloper}
+                name="Don Destin Iriho"
+                role="Web Developer"
+                bio="Don is a skilled web developer with a passion for creating engaging and user-friendly websites and software solutions."
+                socialLinks={[
+                  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/don-destin-iriho/', Icon: LinkedInIcon },
+                  { label: 'GitHub', href: 'https://github.com/diriho', Icon: GithubIcon },
                 ]}
               />
               
