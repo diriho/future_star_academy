@@ -90,9 +90,9 @@ export const programs: Program[] = [
       { src: soccerTrio, caption: 'Academic camp break' },
     ],
     stats: [
-      { value: 500, suffix: '+', label: 'Students Tutored' },
-      { value: 20, suffix: '+', label: 'Education Programs' },
-      { value: 30, suffix: '+', label: 'Volunteer Tutors' },
+      { value: 30, suffix: '+', label: 'Students Tutored' },
+      { value: 4, suffix: '+', label: 'Education Programs' },
+      { value: 6, suffix: '+', label: 'Volunteer Tutors' },
       { value: 90, suffix: '%', label: 'Improved Grades' },
     ],
     successStories: [
@@ -143,10 +143,10 @@ export const programs: Program[] = [
       { src: classroom2, caption: 'Youth league' },
     ],
     stats: [
-      { value: 15, suffix: '+', label: 'Soccer Teams' },
-      { value: 300, suffix: '+', label: 'Active Players' },
+      { value: 4, suffix: '+', label: 'Soccer Teams' },
+      { value: 30, suffix: '+', label: 'Active Players' },
       { value: 25, suffix: '+', label: 'Matches Per Season' },
-      { value: 10, suffix: '+', label: 'Certified Coaches' },
+      { value: 4, suffix: '+', label: 'Certified Coaches' },
     ],
     successStories: [
       {
@@ -196,10 +196,10 @@ export const programs: Program[] = [
       { src: classroom1, caption: 'Goal-setting activity' },
     ],
     stats: [
-      { value: 200, suffix: '+', label: 'Mentor Matches' },
-      { value: 100, suffix: '+', label: 'Trained Mentors' },
-      { value: 12, suffix: '+', label: 'Life Skills Workshops' },
-      { value: 95, suffix: '%', label: 'Mentee Retention' },
+      { value: 30, suffix: '+', label: 'Mentor Matches' },
+      { value: 5, suffix: '+', label: 'Trained Mentors' },
+      { value: 6, suffix: '+', label: 'Life Skills Workshops' },
+      { value: 30, suffix: '%', label: 'Mentee Retention' },
     ],
     successStories: [
       {
@@ -250,10 +250,10 @@ export const programs: Program[] = [
       { src: soccerTrio, caption: 'Youth outreach day' },
     ],
     stats: [
-      { value: 100, suffix: '+', label: 'Volunteers & Partners' },
-      { value: 40, suffix: '+', label: 'Community Projects' },
-      { value: 10, suffix: '+', label: 'Partner Schools' },
-      { value: 1000, suffix: '+', label: 'Community Members Reached' },
+      { value: 6, suffix: '+', label: 'Volunteers & Partners' },
+      { value: 5, suffix: '+', label: 'Community Projects' },
+      { value: 3, suffix: '+', label: 'Partner Schools' },
+      { value: 300, suffix: '+', label: 'Community Members Reached' },
     ],
     successStories: [
       {
