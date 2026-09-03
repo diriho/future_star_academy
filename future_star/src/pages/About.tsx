@@ -4,7 +4,7 @@ import { SectionTitle } from '../components/shared/SectionTitle'
 import { FeatureCard } from '../components/shared/FeatureCard'
 import { StatsSection } from '../components/shared/StatsSection'
 import { TeamCard } from '../components/shared/TeamCard'
-import { FacebookIcon, GithubIcon, InstagramIcon, YoutubeIcon, LinkedInIcon } from '../components/shared/SocialIcons'
+import { FacebookIcon, GithubIcon, InstagramIcon, LinkedInIcon } from '../components/shared/SocialIcons'
 import teamHuddle from '../assets/team-huddle.jpg'
 import './About.css'
 import charlesGongar from '../assets/team/charles_gongar.jpeg'
@@ -138,7 +138,6 @@ const About = () => {
                 socialLinks={[
                   { label: 'LinkedIn', href: 'https://linkedin.com/in/charles-t-gongar-jr-6157b1325/', Icon: LinkedInIcon },
                   { label: 'Instagram', href: '', Icon: InstagramIcon },
-                  { label: 'YouTube', href: 'https://youtube.com/johndoe', Icon: YoutubeIcon },
                 ]}
               />
 
@@ -150,8 +149,6 @@ const About = () => {
                 bio="Alexander is dedicated to helping young people discover their potential, build character, develop their talents, and become leaders both on and off the field."
                 socialLinks={[
                   { label: 'LinkedIn', href: 'https://linkedin.com/in/charles-t-gongar-jr-6157b1325/', Icon: LinkedInIcon },
-                  { label: 'Facebook', href: 'https://facebook.com/janesmith', Icon: FacebookIcon },
-                  { label: 'Instagram', href: 'https://instagram.com/janesmith', Icon: InstagramIcon },
                 ]}
               />
 
