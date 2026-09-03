@@ -12,9 +12,11 @@
   box-shadow: 0 12px 28px rgba(var(--color-navy-rgb), 0.16);
 }
 
+/* Same reasoning as NewsEventCard: a 4:3 slot shows an editor's portrait photo
+   whole instead of cropping it to a band. */
 .news-card__image {
   position: relative;
-  height: 160px;
+  aspect-ratio: 4 / 3;
 }
 
 .news-card__lazy-image {

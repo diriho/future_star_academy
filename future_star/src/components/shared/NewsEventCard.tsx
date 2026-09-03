@@ -27,7 +27,7 @@ export function NewsEventCard({ item, index = 0, onSelect }: NewsEventCardProps)
     >
       <div className="news-event-card__image">
         {item.featuredImage ? (
-          <LazyImage src={item.featuredImage} alt={item.title} className="news-event-card__lazy-image" />
+          <LazyImage src={item.featuredImage} alt={item.title} className="news-event-card__lazy-image" fit="contain" />
         ) : (
           <div className="news-event-card__placeholder" aria-hidden="true">
             {isEvent ? <PartyPopper size={28} /> : <Newspaper size={28} />}

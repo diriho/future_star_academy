@@ -22,3 +22,36 @@
 .lazy-image__img.is-loaded {
   opacity: 1;
 }
+
+/* Its own stacking context, so the z-indexes that layer the picture over its
+   backdrop stay inside the box and can't rise above badges a caller places on
+   top of it, such as a card's category tag. */
+.lazy-image--contain {
+  isolation: isolate;
+}
+
+.lazy-image--contain .lazy-image__img {
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+}
+
+.lazy-image__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  /* Enlarged so the blur's soft edges fall outside the box instead of showing
+     as a pale rim around it. */
+  transform: scale(1.2);
+  /* Dimmed a touch so the sharp picture in front of it stands out. */
+  filter: blur(20px) brightness(0.8);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.lazy-image__backdrop.is-loaded {
+  opacity: 1;
+}

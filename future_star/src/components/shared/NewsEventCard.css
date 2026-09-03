@@ -14,9 +14,12 @@
   box-shadow: var(--shadow-card-hover);
 }
 
+/* A fixed-ratio slot rather than a fixed height: the pictures come from Notion in
+   whatever shape the editor uploaded, and 4:3 gives a portrait enough height to be
+   seen whole rather than cropped to a band. */
 .news-event-card__image {
   position: relative;
-  height: 180px;
+  aspect-ratio: 4 / 3;
 }
 
 .news-event-card__lazy-image {

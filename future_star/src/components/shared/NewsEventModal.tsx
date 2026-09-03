@@ -123,7 +123,7 @@ export function NewsEventModal({ slug, preview, onClose }: NewsEventModalProps) 
               className="story__hero"
               aria-label={`View image full size: ${item?.title ?? ''}`}
             >
-              <LazyImage src={heroUrl} alt={item?.title ?? ''} className="story__hero-image" />
+              <LazyImage src={heroUrl} alt={item?.title ?? ''} className="story__hero-image" fit="contain" />
               <span className="story__hero-zoom" aria-hidden="true">
                 <ZoomIn size={16} />
               </span>

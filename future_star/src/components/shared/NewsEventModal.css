@@ -13,10 +13,10 @@
 
 .story__hero-image {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  /* Keeps the banner from filling a short viewport before any of the text. The
-     whole, uncropped picture is a click away in the lightbox. */
-  max-height: 42vh;
+  aspect-ratio: 4 / 3;
+  /* Keeps the banner from filling a short viewport before any of the text; the
+     picture is shown whole within it, and full size a click away in the lightbox. */
+  max-height: 48vh;
 }
 
 .story__hero-zoom {

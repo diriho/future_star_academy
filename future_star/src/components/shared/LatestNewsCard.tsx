@@ -32,7 +32,7 @@ export function LatestNewsCard({ item, index = 0, onSelect }: LatestNewsCardProp
     >
       <div className="news-card__image">
         {item.featuredImage ? (
-          <LazyImage src={item.featuredImage} alt={item.title} className="news-card__lazy-image" />
+          <LazyImage src={item.featuredImage} alt={item.title} className="news-card__lazy-image" fit="contain" />
         ) : (
           <div className="news-card__placeholder" aria-hidden="true">
             {isEvent ? <PartyPopper size={24} /> : <Newspaper size={24} />}
