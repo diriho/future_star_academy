@@ -110,7 +110,7 @@ export default function Contact() {
                 </span>
                 <div>
                   <p className="contact-info__label">Website</p>
-                  <p className="contact-info__value">www.fsausaliberia.org</p>
+                  <p className="contact-info__value">https://fsausaliberia.org</p>
                 </div>
               </div>
 
