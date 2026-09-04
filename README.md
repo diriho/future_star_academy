@@ -51,3 +51,4 @@ runs the Express app as a single serverless function at `/api/*`, so both halves
 Set `STRIPE_SECRET_KEY`, `NOTION_API_KEY`, `NOTION_DATABASE_ID`, and `VITE_STRIPE_PUBLISHABLE_KEY`
 in the project's environment variables. Leave `PORT` and `CLIENT_URL` unset — the platform supplies
 the socket, and `server/clientUrl.js` derives the origin from the deployment's own domain.
+
