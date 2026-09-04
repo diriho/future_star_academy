@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Layout } from './components/layout/Layout'
 import { LoadingSpinner } from './components/shared/LoadingSpinner'
 import './App.css'
@@ -54,6 +55,7 @@ function App() {
         </Routes>
       </Suspense>
       <Analytics />
+      <SpeedInsights />
     </>
   )
 }
