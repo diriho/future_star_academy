@@ -4,7 +4,7 @@ import { Backpack, BookOpen, Goal, HeartHandshake, Shirt, Utensils } from 'lucid
 import { HeroSection } from '../../components/shared/HeroSection'
 import { SectionTitle } from '../../components/shared/SectionTitle'
 import { DonationWidget } from './DonationWidget'
-import classroom1 from '../../assets/classroom-1.jpg'
+import player3 from '../../assets/player3.jpeg'
 import teamHuddle from '../../assets/team-huddle.jpg'
 import './Sponsor.css'
 
@@ -33,7 +33,7 @@ export default function Sponsor() {
       </Helmet>
 
       <HeroSection
-        image={classroom1}
+        image={player3}
         eyebrow="Get Involved / Sponsor"
         title={
           <>
@@ -55,7 +55,7 @@ export default function Sponsor() {
             transition={{ duration: 0.5 }}
             className="sponsor-split__image"
           >
-            <img src={classroom1} alt="Student at Future Stars Academy" />
+            <img src={player3} alt="Student at Future Stars Academy" />
           </motion.div>
           <div>
             <SectionTitle

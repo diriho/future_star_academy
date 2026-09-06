@@ -30,8 +30,9 @@ import { useStoryDialog } from '../lib/useStoryDialog'
 import './Home.css'
 
 import soccerTrio from '../assets/soccer-trio.jpg'
-import classroom1 from '../assets/classroom-1.jpg'
-import classroom2 from '../assets/classroom-2.jpg'
+import player1 from '../assets/player1.jpeg'
+import player2 from '../assets/player2.jpeg'
+import player3 from '../assets/player3.jpeg'
 import teamHuddle from '../assets/team-huddle.jpg'
 
 const missionCards = [
@@ -81,9 +82,10 @@ const getInvolvedSidebar = [
 
 const galleryImages = [
   { src: soccerTrio, caption: 'On the Field' },
-  { src: classroom1, caption: 'Classroom Learning' },
+  { src: player1, caption: 'Dribbling Drills' },
   { src: teamHuddle, caption: 'Team Spirit' },
-  { src: classroom2, caption: 'STEM & Tutoring' },
+  { src: player2, caption: 'Ready to Play' },
+  { src: player3, caption: 'Future Star' },
 ]
 
 const LATEST_COUNT = 3

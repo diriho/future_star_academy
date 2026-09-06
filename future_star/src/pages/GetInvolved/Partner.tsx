@@ -24,7 +24,7 @@ import { CTASection } from '../../components/shared/CTASection'
 import { Button } from '../../components/shared/Button'
 import { GoogleFormModal } from '../../components/shared/GoogleFormModal'
 import { GOOGLE_FORMS } from '../../config/forms'
-import classroom2 from '../../assets/classroom-2.jpg'
+import player3 from '../../assets/player3.jpeg'
 import teamHuddle from '../../assets/team-huddle.jpg'
 import './Partner.css'
 
@@ -70,7 +70,7 @@ export default function Partner() {
       </Helmet>
 
       <HeroSection
-        image={classroom2}
+        image={player3}
         eyebrow="Get Involved / Partner"
         title="Partner With Future Stars Academy"
         subtitle="Join businesses, schools, and organizations helping us build minds, develop talents, and transform lives across Liberia."

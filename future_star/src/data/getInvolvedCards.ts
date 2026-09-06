@@ -1,7 +1,7 @@
 import { Handshake, HandHeart, Users2 } from 'lucide-react'
 import soccerTrio from '../assets/soccer-trio.jpg'
 import teamHuddle from '../assets/team-huddle.jpg'
-import classroom1 from '../assets/classroom-1.jpg'
+import player3 from '../assets/player3.jpeg'
 
 export const getInvolvedCards = [
   {
@@ -12,7 +12,7 @@ export const getInvolvedCards = [
     to: '/get-involved/volunteer',
   },
   {
-    image: classroom1,
+    image: player3,
     icon: Handshake,
     title: 'Sponsor',
     description: 'Sponsor a child’s education, uniforms, meals, and mentorship for a full year.',
