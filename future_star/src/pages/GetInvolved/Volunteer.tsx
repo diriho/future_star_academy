@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { HandHeart } from 'lucide-react'
 import { HeroSection } from '../../components/shared/HeroSection'
@@ -7,15 +6,12 @@ import { FeatureCard } from '../../components/shared/FeatureCard'
 import { StatsSection } from '../../components/shared/StatsSection'
 import { CTASection } from '../../components/shared/CTASection'
 import { Button } from '../../components/shared/Button'
-import { GoogleFormModal } from '../../components/shared/GoogleFormModal'
 import { volunteerOpportunities } from '../../data/volunteerOpportunities'
 import { GOOGLE_FORMS } from '../../config/forms'
 import teamHuddle from '../../assets/team-huddle.jpg'
 import './Volunteer.css'
 
 export default function Volunteer() {
-  const [formOpen, setFormOpen] = useState(false)
-
   return (
     <>
       <Helmet>
@@ -33,7 +29,14 @@ export default function Volunteer() {
         subtitle="Help shape the next generation through education, mentorship, sports, and community service."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Get Involved', to: '/get-involved' }, { label: 'Volunteer' }]}
         actions={
-          <Button variant="gold" size="lg" icon={<HandHeart size={16} />} onClick={() => setFormOpen(true)}>
+          <Button
+            variant="gold"
+            size="lg"
+            icon={<HandHeart size={16} />}
+            href={GOOGLE_FORMS.volunteer}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Become a Volunteer
           </Button>
         }
@@ -74,13 +77,6 @@ export default function Volunteer() {
         subtitle="There are plenty of other ways to support Future Stars Academy — from sponsoring a child to partnering with your organization."
         primary={{ label: 'See All Ways to Help', to: '/get-involved' }}
         secondary={{ label: 'Sponsor a Child', to: '/get-involved/sponsor' }}
-      />
-
-      <GoogleFormModal
-        isOpen={formOpen}
-        onClose={() => setFormOpen(false)}
-        title="Volunteer Application"
-        formUrl={GOOGLE_FORMS.volunteer}
       />
     </>
   )
