@@ -19,6 +19,7 @@
   aspect-ratio: 4 / 3;
   width: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
 @media (min-width: 1024px) {

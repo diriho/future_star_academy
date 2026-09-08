@@ -4,6 +4,7 @@ import { Backpack, BookOpen, Goal, HeartHandshake, Shirt, Utensils } from 'lucid
 import { HeroSection } from '../../components/shared/HeroSection'
 import { SectionTitle } from '../../components/shared/SectionTitle'
 import { DonationWidget } from './DonationWidget'
+import player2 from '../../assets/player2.jpeg'
 import player3 from '../../assets/player3.jpeg'
 import teamHuddle from '../../assets/team-huddle.jpg'
 import './Sponsor.css'
@@ -55,7 +56,7 @@ export default function Sponsor() {
             transition={{ duration: 0.5 }}
             className="sponsor-split__image"
           >
-            <img src={player3} alt="Student at Future Stars Academy" />
+            <img src={player2} alt="Student at Future Stars Academy" />
           </motion.div>
           <div>
             <SectionTitle

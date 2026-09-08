@@ -1,11 +1,11 @@
 import { Handshake, HandHeart, Users2 } from 'lucide-react'
 import soccerTrio from '../assets/soccer-trio.jpg'
-import teamHuddle from '../assets/team-huddle.jpg'
+import player1 from '../assets/player1.jpeg'
 import player3 from '../assets/player3.jpeg'
 
 export const getInvolvedCards = [
   {
-    image: teamHuddle,
+    image: player1,
     icon: HandHeart,
     title: 'Volunteer',
     description: 'Share your time and talent as a tutor, coach, mentor, or event volunteer.',

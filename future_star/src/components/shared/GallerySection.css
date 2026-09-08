@@ -30,6 +30,7 @@
 }
 
 .gallery-grid__image img {
+  object-position: center top;
   transition: transform 0.5s ease;
 }
 

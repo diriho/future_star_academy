@@ -25,7 +25,10 @@ import {
   Users2,
 } from 'lucide-react'
 
+import player1 from '../assets/player1.jpeg'
+import player2 from '../assets/player2.jpeg'
 import player3 from '../assets/player3.jpeg'
+import player4 from '../assets/player4.jpeg'
 import soccerTrio from '../assets/soccer-trio.jpg'
 import teamHuddle from '../assets/team-huddle.jpg'
 
@@ -83,8 +86,8 @@ export const programs: Program[] = [
       { icon: FlaskConical, title: 'STEM Learning', description: 'Hands-on science, tech, engineering, and math exploration.' },
     ],
     gallery: [
-      { src: player3, caption: 'Tutoring session in progress' },
-      { src: player3, caption: 'Reading circle' },
+      { src: player1, caption: 'Tutoring session in progress' },
+      { src: player4, caption: 'Reading circle' },
       { src: teamHuddle, caption: 'Student showcase day' },
       { src: soccerTrio, caption: 'Academic camp break' },
     ],
@@ -136,10 +139,10 @@ export const programs: Program[] = [
       { icon: Award, title: 'Character Building', description: 'Coaching that reinforces discipline, respect, and teamwork on and off the field.' },
     ],
     gallery: [
-      { src: soccerTrio, caption: 'Match day' },
+      { src: player4, caption: 'Match day' },
       { src: teamHuddle, caption: 'Team huddle' },
-      { src: player3, caption: 'Pre-season fitness' },
-      { src: player3, caption: 'Youth league' },
+      { src: player1, caption: 'Pre-season fitness' },
+      { src: player2, caption: 'Youth league' },
     ],
     stats: [
       { value: 4, suffix: '+', label: 'Soccer Teams' },
@@ -189,10 +192,10 @@ export const programs: Program[] = [
       { icon: Users2, title: 'Community Mentors', description: 'Trained local mentors offering consistent, caring guidance.' },
     ],
     gallery: [
-      { src: teamHuddle, caption: 'Mentor check-in' },
-      { src: player3, caption: 'Leadership workshop' },
+      { src: player3, caption: 'Mentor check-in' },
+      { src: player2, caption: 'Leadership workshop' },
       { src: soccerTrio, caption: 'Group mentoring session' },
-      { src: player3, caption: 'Goal-setting activity' },
+      { src: player1, caption: 'Goal-setting activity' },
     ],
     stats: [
       { value: 30, suffix: '+', label: 'Mentor Matches' },
@@ -224,7 +227,7 @@ export const programs: Program[] = [
     eyebrow: 'Our Programs / Community Services',
     title: 'Community Outreach & Youth Empowerment',
     subtitle: 'Strengthening the neighborhoods our students call home through outreach, projects, and shared resources.',
-    heroImage: player3,
+    heroImage: player2,
     mission: 'To extend our impact beyond the classroom and field by strengthening the families, schools, and neighborhoods that surround our students.',
     objectives: [
       'Connect families with community resources and support',
@@ -243,7 +246,7 @@ export const programs: Program[] = [
       { icon: MapPinned, title: 'Neighborhood Development', description: 'Long-term investment in the neighborhoods our students call home.' },
     ],
     gallery: [
-      { src: player3, caption: 'Community workshop' },
+      { src: player4, caption: 'Community workshop' },
       { src: teamHuddle, caption: 'Neighborhood service day' },
       { src: player3, caption: 'Health awareness event' },
       { src: soccerTrio, caption: 'Youth outreach day' },

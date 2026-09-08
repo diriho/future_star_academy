@@ -33,6 +33,7 @@ import soccerTrio from '../assets/soccer-trio.jpg'
 import player1 from '../assets/player1.jpeg'
 import player2 from '../assets/player2.jpeg'
 import player3 from '../assets/player3.jpeg'
+import player4 from '../assets/player4.jpeg'
 import teamHuddle from '../assets/team-huddle.jpg'
 
 const missionCards = [
@@ -81,11 +82,11 @@ const getInvolvedSidebar = [
 ]
 
 const galleryImages = [
-  { src: soccerTrio, caption: 'On the Field' },
-  { src: player1, caption: 'Dribbling Drills' },
   { src: teamHuddle, caption: 'Team Spirit' },
+  { src: player1, caption: 'Dribbling Drills' },
   { src: player2, caption: 'Ready to Play' },
   { src: player3, caption: 'Future Star' },
+  { src: player4, caption: 'Footwork Practice' },
 ]
 
 const LATEST_COUNT = 3
