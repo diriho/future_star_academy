@@ -76,6 +76,7 @@ export default function Contact() {
 
       <HeroSection
         image={teamHuddle}
+        imagePosition="center 20%"
         eyebrow="Contact"
         title="Get in Touch"
         subtitle="We'd love to hear from you. Send us a message and our team will get back to you as soon as possible."

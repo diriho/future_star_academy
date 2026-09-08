@@ -24,6 +24,7 @@ export default function Volunteer() {
 
       <HeroSection
         image={teamHuddle}
+        imagePosition="center 20%"
         eyebrow="Get Involved / Volunteer"
         title="Volunteer With Future Stars Academy"
         subtitle="Help shape the next generation through education, mentorship, sports, and community service."

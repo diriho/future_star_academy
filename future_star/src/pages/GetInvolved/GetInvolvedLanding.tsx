@@ -20,6 +20,7 @@ export default function GetInvolvedLanding() {
 
       <HeroSection
         image={teamHuddle}
+        imagePosition="center 20%"
         eyebrow="Get Involved"
         title="Be Part of the Future Stars Story"
         subtitle="Whether you have an hour, a skill, or a network — there's a place for you in our mission to build minds, develop talents, and transform lives."

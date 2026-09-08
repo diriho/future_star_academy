@@ -47,6 +47,7 @@ export interface Program {
   title: string
   subtitle: string
   heroImage: string
+  heroImagePosition?: string
   mission: string
   objectives: string[]
   overview: string
@@ -175,6 +176,7 @@ export const programs: Program[] = [
     title: 'Leadership & Life Skills',
     subtitle: 'Pairing young people with trusted mentors who help build confidence, character, and a clear path forward.',
     heroImage: teamHuddle,
+    heroImagePosition: 'center 20%',
     mission: 'To surround every young person with consistent, caring adult mentors who help them build the confidence, skills, and vision to lead their own futures.',
     objectives: [
       'Match students with consistent, trained mentors',

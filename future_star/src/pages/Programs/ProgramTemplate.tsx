@@ -28,6 +28,7 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
 
       <HeroSection
         image={program.heroImage}
+        imagePosition={program.heroImagePosition}
         eyebrow={program.eyebrow}
         title={program.title}
         subtitle={program.subtitle}

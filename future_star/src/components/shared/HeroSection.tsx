@@ -13,6 +13,7 @@ interface HeroCta {
 
 interface HeroSectionProps {
   image: string
+  imagePosition?: string
   eyebrow?: string
   title: ReactNode
   subtitle?: string
@@ -25,6 +26,7 @@ interface HeroSectionProps {
 
 export function HeroSection({
   image,
+  imagePosition,
   eyebrow,
   title,
   subtitle,
@@ -36,7 +38,12 @@ export function HeroSection({
 }: HeroSectionProps) {
   return (
     <section className={cn('hero', size === 'lg' && 'hero--lg')}>
-      <img src={image} alt="" className="hero__image" />
+      <img
+        src={image}
+        alt=""
+        className="hero__image"
+        style={imagePosition ? { objectPosition: imagePosition } : undefined}
+      />
       <div className="hero__overlay" />
       <div className="hero__content">
         {crumbs && <Breadcrumb items={crumbs} light className="hero__breadcrumb" />}

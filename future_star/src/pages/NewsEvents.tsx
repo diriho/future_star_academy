@@ -49,6 +49,7 @@ export default function NewsEvents() {
 
       <HeroSection
         image={teamHuddle}
+        imagePosition="center 20%"
         eyebrow="News & Events"
         title="What's Happening at Future Stars Academy"
         subtitle="Stories from our programs and community, and the events bringing us together."
